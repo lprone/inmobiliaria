@@ -1,6 +1,6 @@
 package com.unrc.app;
 
-import com.unrc.app.models.User;
+import com.unrc.app.models.Inmobiliaria;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.javalite.test.jspec.JSpec.the;
 import static org.junit.Assert.assertEquals;
 
-public class UserSpec {
+public class InmobiliariaSpec {
 
     @Before
     public void before() {
@@ -27,23 +27,21 @@ public class UserSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        User user = new User();
+        Inmobiliaria inmo = new Inmobiliaria();
 
         //check errors
-        the(user).shouldNotBe("valid");
-        the(user.errors().get("first_name")).shouldBeEqual("value is missing");
-        the(user.errors().get("last_name")).shouldBeEqual("value is missing");
-
+        the(inmo).shouldNotBe("valid");
+        the(inmo.errors().get( "nombre")).shouldBeEqual("value is missing");
+        
         //set missing values
-        user.set("first_name", "John", "last_name", "Doe");
+        inmo.set("nombre", "myInmo");
 
         //all is good:
-        the(user).shouldBe("valid");
+        the(inmo).shouldBe("valid");
     }
 
     @Test
-    public void testGetUserId() {
-        assertEquals(User.getId("Lucas", "Prone"), 5);
-        assertEquals(User.getId("", ""), -1);        
+    public void testGetInmobiliariaId() {   
+        assertEquals((Inmobiliaria.getId("")), -1);
     }
 }
