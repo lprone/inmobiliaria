@@ -27,14 +27,17 @@ public class Inmo {
 //
 //        User.update(User.getId("John", "Doe"), tags, values);
 
-        String[] tags = {"nombre", "calle","altura", "barrio", "ciudad", "telefono", "email", "URLweb"};
-        String[] values = {"Lucas", "Prone"};
+//        String[] tags = {"nombre", "calle","altura", "barrio", "ciudad", "telefono", "email", "URLweb"};
+//        String[] values = {"Lucas", "Prone"};
+//
+        
+//        Inmobiliaria i = new Inmobiliaria();
+//        i.set("nombre","myInmo");
+//        i.saveIt();
+        
+//        System.out.println(Inmobiliaria.getId("myInmo"));
 
-        Inmobiliaria i = new Inmobiliaria();
-        i.set("nombre","myInmo");
-        i.saveIt();
-
-        System.out.println(Inmobiliaria.list().toString());
+//        System.out.println(Inmobiliaria.list().toString());
 
 
     }

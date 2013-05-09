@@ -8,7 +8,7 @@ CREATE TABLE users(
 
 DROP TABLE IF EXISTS inmoapp_development.Inmobiliarias;
 CREATE TABLE inmoapp_development.Inmobiliarias (
-  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL DEFAULT '',
   direccion VARCHAR(45) NOT NULL DEFAULT '',
   altura int(10) unsigned NOT NULL DEFAULT '0',
@@ -19,4 +19,3 @@ CREATE TABLE inmoapp_development.Inmobiliarias (
   URLweb VARCHAR(45) NOT NULL DEFAULT '',
   PRIMARY KEY(id)
 );
-

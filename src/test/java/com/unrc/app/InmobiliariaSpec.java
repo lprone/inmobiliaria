@@ -42,6 +42,7 @@ public class InmobiliariaSpec {
 
     @Test
     public void testGetInmobiliariaId() {   
+        assertEquals((Inmobiliaria.getId("myInmo")), 1);
         assertEquals((Inmobiliaria.getId("")), -1);
     }
 }

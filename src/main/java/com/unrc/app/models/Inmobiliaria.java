@@ -52,8 +52,7 @@ public class Inmobiliaria extends Model {
 
     public static int getId(String name) {
         try {
-            System.out.println(Inmobiliaria.findFirst("nombre = ? ", name).get("id"));
-            return (Integer) Inmobiliaria.findFirst("nombre = ? ", name).get("id");
+            return (Integer)(Inmobiliaria.findFirst("nombre = ? ", name).get("id"));
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
