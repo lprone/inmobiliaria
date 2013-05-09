@@ -6,8 +6,8 @@ CREATE TABLE users(
   last_name VARCHAR(56)
 );
 
-DROP TABLE IF EXISTS inmoapp_development.Inmobiliarias;
-CREATE TABLE inmoapp_development.Inmobiliarias (
+DROP TABLE IF EXISTS inmoapp_development.inmobiliarias;
+CREATE TABLE inmoapp_development.inmobiliarias (
   id int(11) NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL DEFAULT '',
   direccion VARCHAR(45) NOT NULL DEFAULT '',
