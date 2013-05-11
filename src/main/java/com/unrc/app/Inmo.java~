@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class Inmo {
 
     public static void main(String[] args) {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "1");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
 
         System.out.println(RealEstateController.list());
 

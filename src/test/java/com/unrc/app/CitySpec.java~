@@ -1,7 +1,7 @@
 package com.unrc.app;
 
-import com.unrc.app.controllers.RealEstateController;
-import com.unrc.app.models.RealEstate;
+import com.unrc.app.controllers.CityController;
+import com.unrc.app.models.*;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -11,11 +11,11 @@ import org.junit.Test;
 import static org.javalite.test.jspec.JSpec.the;
 import static org.junit.Assert.assertEquals;
 
-public class RealEstateSpec {
+public class CitySpec {
 
     @Before
     public void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "1");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
         Base.openTransaction();
     }
 
@@ -28,22 +28,22 @@ public class RealEstateSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        RealEstate inmo = new RealEstate();
+        City inmo = new City();
 
         //check errors
         the(inmo).shouldNotBe("valid");
         the(inmo.errors().get("name")).shouldBeEqual("value is missing");
 
         //set missing values
-        inmo.set("name", "myInmo");
+        inmo.set("name", "Rio Cuarto");
 
         //all is good:
         the(inmo).shouldBe("valid");
     }
 
     @Test
-    public void testGetInmobiliariaId() {
-        assertEquals((RealEstateController.getId("myInmo")), 1);
-        assertEquals((RealEstateController.getId("")), -1);
+    public void testGetId() {
+        assertEquals((CityController.getId("Rio Cuarto")), 1);
+        assertEquals((CityController.getId("")), -1);
     }
 }

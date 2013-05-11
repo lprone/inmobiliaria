@@ -1,7 +1,7 @@
 package com.unrc.app;
 
-import com.unrc.app.controllers.UserController;
-import com.unrc.app.models.User;        
+import com.unrc.app.controllers.OwnerController;
+import com.unrc.app.models.Owner;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import static org.javalite.test.jspec.JSpec.the;
 import static org.junit.Assert.assertEquals;
 
-public class UserSpec {
+public class OwnerSpec {
 
     @Before
     public void before() {
@@ -28,23 +28,22 @@ public class UserSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        User user = new User();
+        Owner owner = new Owner();
 
         //check errors
-        the(user).shouldNotBe("valid");
-        the(user.errors().get("first_name")).shouldBeEqual("value is missing");
-        the(user.errors().get("last_name")).shouldBeEqual("value is missing");
+        the(owner).shouldNotBe("valid");
+        the(owner.errors().get("name")).shouldBeEqual("value is missing");
 
         //set missing values
-        user.set("first_name", "John", "last_name", "Doe");
+        owner.set("name", "owner");
 
         //all is good:
-        the(user).shouldBe("valid");
+        the(owner).shouldBe("valid");
     }
 
     @Test
-    public void testGetUserId() {
-        assertEquals(UserController.getId("Lucas", "Prone"), 5);
-        assertEquals(UserController.getId("", ""), -1);        
+    public void testGetOwnerId() {
+        assertEquals((OwnerController.getId("owner")), -1);
+        assertEquals((OwnerController.getId("")), -1);
     }
 }
