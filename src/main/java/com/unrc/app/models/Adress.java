@@ -10,29 +10,29 @@ package com.unrc.app.models;
  */
 public class Adress {
 
-    private String calle, barrio, ciudad;
-    private int altura;
+    private String street, district, city;
+    private int number;
 
-    public Adress(String calle, int altura, String barrio, String ciudad) {
-        this.calle = calle;
-        this.altura = altura;
-        this.barrio = barrio;
-        this.ciudad = ciudad;
+    public Adress(String street, int number, String district, String city) {
+        this.street = street;
+        this.number = number;
+        this.district = district;
+        this.city = city;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getStreet() {
+        return street;
     }
 
-    public int getAltura() {
-        return altura;
+    public int getNumber() {
+        return number;
     }
 
-    public String getBarrio() {
-        return barrio;
+    public String getDistrict() {
+        return district;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getCity() {
+        return city;
     }
 }
