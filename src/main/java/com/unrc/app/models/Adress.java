@@ -8,12 +8,12 @@ package com.unrc.app.models;
  *
  * @author lprone
  */
-public class Direccion {
+public class Adress {
 
     private String calle, barrio, ciudad;
     private int altura;
 
-    public Direccion(String calle, int altura, String barrio, String ciudad) {
+    public Adress(String calle, int altura, String barrio, String ciudad) {
         this.calle = calle;
         this.altura = altura;
         this.barrio = barrio;

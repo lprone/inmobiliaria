@@ -1,29 +1,32 @@
-package com.unrc.app.models;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.unrc.app.controllers;
 
+import com.unrc.app.models.User;
 import java.util.List;
-import org.javalite.activejdbc.Model;
 
-public class Inmobiliaria extends Model {
-
-    static {
-        validatePresenceOf("nombre");
-    }
-
-    public static int insert(String[] tags, String[] values) {
+/**
+ *
+ * @author lprone
+ */
+public class UserController {
+    
+     public static int insert(String[] tags, String[] values) {
         try {
-            Inmobiliaria aux = new Inmobiliaria();
+            User aux = new User();
             aux.set(tags, values);
             aux.saveIt();
             return 0;
         } catch (Exception e) {
             return -1;
         }
-
     }
 
     public static int update(int id, String[] tags, String[] values) {
         try {
-            Inmobiliaria e = Inmobiliaria.findFirst("id = ?", id);
+            User e = User.findFirst("id = ?", id);
             for (int i = 0; i < tags.length; i++) {
                 e.set(tags[i], values[i]).saveIt();
             }
@@ -36,27 +39,25 @@ public class Inmobiliaria extends Model {
 
     public static int delete(int id) {
         try {
-            Inmobiliaria e = Inmobiliaria.findFirst("id = ?", id);
+            User e = User.findFirst("id = ?", id);
             e.delete();
             return 0;
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
-
     }
 
-    public static List<Inmobiliaria> list() {
-        return Inmobiliaria.findAll();
+    public static List<User> list() {
+        return User.findAll();
     }
 
-    public static int getId(String name) {
+    public static int getId(String first_name, String last_name) {
         try {
-            return (Integer)(Inmobiliaria.findFirst("nombre = ? ", name).get("id"));
+            return (Integer) User.findFirst("first_name = ? and last_name = ?", first_name, last_name).get("id");
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
-
-    }
+    }    
 }
