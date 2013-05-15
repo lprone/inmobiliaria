@@ -10,29 +10,52 @@ package com.unrc.app.models;
  */
 public class Adress {
 
-    private String street, district, city;
-    private int number;
+    private String street ;
+    private int number,district, city;
 
-    public Adress(String street, int number, String district, String city) {
+    /**
+     * 
+     * @param street
+     * @param number
+     * @param district
+     * @param city 
+     */
+    public Adress(String street, int number, int district, int city) {
         this.street = street;
         this.number = number;
         this.district = district;
         this.city = city;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getStreet() {
         return street;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public int getNumber() {
         return number;
     }
 
-    public String getDistrict() {
+    /**
+     * 
+     * @return 
+     */
+    public int getDistrict() {
         return district;
     }
 
-    public String getCity() {
+    /**
+     * 
+     * @return 
+     */
+    public int getCity() {
         return city;
     }
 }

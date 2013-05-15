@@ -13,10 +13,21 @@ import java.util.List;
  */
 public class OwnerController {
     
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static Owner get(String name){        
         return Owner.findById(getId(name));
     }
 
+    /**
+     * 
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int insert(String[] tags, String[] values) {
         try {
             Owner aux = new Owner();
@@ -28,6 +39,13 @@ public class OwnerController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             Owner e = Owner.findFirst("id = ?", id);
@@ -41,6 +59,11 @@ public class OwnerController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public static int delete(int id) {
         try {
             Owner e = Owner.findFirst("id = ?", id);
@@ -52,19 +75,33 @@ public class OwnerController {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static List<Owner> list() {
         return Owner.findAll();
     }
 
+    /**
+     * 
+     * @param tag
+     * @param value
+     * @return 
+     */
     public static List<Owner> listSelect(String tag, int value) {
         return Owner.find(tag + " = ?", value);
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static int getId(String name) {
         try {
             return (Integer) (Owner.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

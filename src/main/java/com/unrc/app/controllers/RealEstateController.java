@@ -14,11 +14,22 @@ import java.util.List;
  * @author lprone
  */
 public class RealEstateController {
-    
-    public static RealEstate get(String name){        
+
+    /**
+     * 
+     * @param name
+     * @return 
+     */
+    public static RealEstate get(String name) {
         return RealEstate.findById(getId(name));
     }
 
+    /**
+     * 
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int insert(String[] tags, String[] values) {
         try {
             RealEstate aux = new RealEstate();
@@ -30,6 +41,13 @@ public class RealEstateController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             RealEstate e = RealEstate.findFirst("id = ?", id);
@@ -43,6 +61,11 @@ public class RealEstateController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public static int delete(int id) {
         try {
             RealEstate e = RealEstate.findFirst("id = ?", id);
@@ -54,28 +77,48 @@ public class RealEstateController {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static List<RealEstate> list() {
         return RealEstate.findAll();
     }
 
+    /**
+     * 
+     * @param e
+     * @param o
+     * @return 
+     */
     public static int assignOwner(RealEstate e, Owner o) {
         try {
-                e.add(o);           
-            return 1;
-        } catch (Exception ex) {
+            o.add(e);
             return 0;
+        } catch (Exception ex) {
+            return -1;
         }
     }
 
+    /**
+     * 
+     * @param tag
+     * @param value
+     * @return 
+     */
     public static List<RealEstate> listSelect(String tag, int value) {
         return RealEstate.find(tag + " = ?", value);
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static int getId(String name) {
         try {
             return (Integer) (RealEstate.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

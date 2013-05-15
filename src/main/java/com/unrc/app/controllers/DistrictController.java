@@ -13,6 +13,12 @@ import java.util.List;
  */
 public class DistrictController {
 
+    /**
+     * 
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int insert(String[] tags, String[] values) {
         try {
             District aux = new District();
@@ -24,6 +30,13 @@ public class DistrictController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @param tags
+     * @param values
+     * @return 
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             District e = District.findFirst("id = ?", id);
@@ -37,6 +50,11 @@ public class DistrictController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public static int delete(int id) {
         try {
             District e = District.findFirst("id = ?", id);
@@ -48,19 +66,33 @@ public class DistrictController {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static List<District> list() {
         return District.findAll();
     }
 
+    /**
+     * 
+     * @param tag
+     * @param value
+     * @return 
+     */
     public static List<District> listSelect(String tag, int value) {
         return District.find(tag + " = ?", value);
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static int getId(String name) {
         try {
             return (Integer) (District.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

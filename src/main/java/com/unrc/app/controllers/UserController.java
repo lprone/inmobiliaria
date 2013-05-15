@@ -13,6 +13,12 @@ import java.util.List;
  */
 public class UserController {
     
+    /**
+     * 
+     * @param tags
+     * @param values
+     * @return 
+     */
      public static int insert(String[] tags, String[] values) {
         try {
             User aux = new User();
@@ -24,6 +30,13 @@ public class UserController {
         }
     }
 
+     /**
+      * 
+      * @param id
+      * @param tags
+      * @param values
+      * @return 
+      */
     public static int update(int id, String[] tags, String[] values) {
         try {
             User e = User.findFirst("id = ?", id);
@@ -37,6 +50,11 @@ public class UserController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public static int delete(int id) {
         try {
             User e = User.findFirst("id = ?", id);
@@ -48,15 +66,24 @@ public class UserController {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static List<User> list() {
         return User.findAll();
     }
 
+    /**
+     * 
+     * @param first_name
+     * @param last_name
+     * @return 
+     */
     public static int getId(String first_name, String last_name) {
         try {
             return (Integer) User.findFirst("first_name = ? and last_name = ?", first_name, last_name).get("id");
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }    

@@ -28,20 +28,20 @@ public class DistrictSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        District d = new District();
+        District aux = new District();
 
         //check errors
-        the(d).shouldNotBe("valid");
-        the(d.errors().get("name")).shouldBeEqual("value is missing");
-        the(d.errors().get("city_id")).shouldBeEqual("value is missing");
+        the(aux).shouldNotBe("valid");
+        the(aux.errors().get("name")).shouldBeEqual("value is missing");
+        the(aux.errors().get("city_id")).shouldBeEqual("value is missing");
 
         //set missing values
-        d.set("name", "Centro");
-        d.set("city_id", "1");
+        aux.set("name", "Centro");
+        aux.set("city_id", "1");
 
 
         //all is good:
-        the(d).shouldBe("valid");
+        the(aux).shouldBe("valid");
     }
 
     @Test

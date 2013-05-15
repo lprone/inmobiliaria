@@ -1,7 +1,7 @@
 package com.unrc.app;
 
-import com.unrc.app.controllers.RealEstateController;
-import com.unrc.app.models.RealEstate;
+import com.unrc.app.controllers.BuildingTypeController;
+import com.unrc.app.models.BuildingType;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import static org.javalite.test.jspec.JSpec.the;
 import static org.junit.Assert.assertEquals;
 
-public class RealEstateSpec {
+public class BuildingTypeSpec {
 
     @Before
     public void before() {
@@ -28,22 +28,22 @@ public class RealEstateSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        RealEstate aux = new RealEstate();
+        BuildingType aux = new BuildingType();
 
         //check errors
         the(aux).shouldNotBe("valid");
-        the(aux.errors().get("name")).shouldBeEqual("value is missing");
+        the(aux.errors().get("type")).shouldBeEqual("value is missing");
 
         //set missing values
-        aux.set("name", "myInmo");
+        aux.set("type", "land");
 
         //all is good:
         the(aux).shouldBe("valid");
     }
 
     @Test
-    public void testGetInmobiliariaId() {
-        assertEquals((RealEstateController.getId("myInmo")), 1);
-        assertEquals((RealEstateController.getId("")), -1);
+    public void testGetId() {
+        assertEquals((BuildingTypeController.getId("land")), 1);
+        assertEquals((BuildingTypeController.getId("")), -1);
     }
 }

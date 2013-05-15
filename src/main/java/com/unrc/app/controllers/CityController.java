@@ -13,10 +13,20 @@ import java.util.List;
  */
 public class CityController {
     
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static City get(String name){        
         return City.findById(getId(name));
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static int insert(String name) {
         try {
             City.createIt("name", name);
@@ -26,6 +36,12 @@ public class CityController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @param name
+     * @return 
+     */
     public static int update(int id, String name) {
         try {
             City e = City.findFirst("id = ?", id);
@@ -37,6 +53,11 @@ public class CityController {
         }
     }
 
+    /**
+     * 
+     * @param id
+     * @return 
+     */
     public static int delete(int id) {
         try {
             City e = City.findFirst("id = ?", id);
@@ -48,15 +69,23 @@ public class CityController {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public static List<City> list() {
         return City.findAll();
     }
 
+    /**
+     * 
+     * @param name
+     * @return 
+     */
     public static int getId(String name) {
         try {
             return (Integer) (City.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

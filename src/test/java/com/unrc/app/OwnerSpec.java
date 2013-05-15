@@ -15,7 +15,7 @@ public class OwnerSpec {
 
     @Before
     public void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "1");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
         Base.openTransaction();
     }
 
@@ -28,17 +28,17 @@ public class OwnerSpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        Owner owner = new Owner();
+        Owner aux = new Owner();
 
         //check errors
-        the(owner).shouldNotBe("valid");
-        the(owner.errors().get("name")).shouldBeEqual("value is missing");
+        the(aux).shouldNotBe("valid");
+        the(aux.errors().get("name")).shouldBeEqual("value is missing");
 
         //set missing values
-        owner.set("name", "owner");
+        aux.set("name", "owner");
 
         //all is good:
-        the(owner).shouldBe("valid");
+        the(aux).shouldBe("valid");
     }
 
     @Test

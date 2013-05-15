@@ -1,7 +1,7 @@
 package com.unrc.app;
 
 import com.unrc.app.controllers.CityController;
-import com.unrc.app.models.*;
+import com.unrc.app.models.City;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -28,17 +28,17 @@ public class CitySpec {
     @Test
     public void shouldValidateMandatoryFields() {
 
-        City inmo = new City();
+        City aux = new City();
 
         //check errors
-        the(inmo).shouldNotBe("valid");
-        the(inmo.errors().get("name")).shouldBeEqual("value is missing");
+        the(aux).shouldNotBe("valid");
+        the(aux.errors().get("name")).shouldBeEqual("value is missing");
 
         //set missing values
-        inmo.set("name", "Rio Cuarto");
+        aux.set("name", "Rio Cuarto");
 
         //all is good:
-        the(inmo).shouldBe("valid");
+        the(aux).shouldBe("valid");
     }
 
     @Test

@@ -1,7 +1,6 @@
 package com.unrc.app.controllers;
 
 import com.unrc.app.models.BuildingType;
-import com.unrc.app.models.Building;
 
 import java.util.List;
 
@@ -10,11 +9,22 @@ import java.util.List;
  * @author gCoria
  */
 public class BuildingTypeController {
-    
-    public static BuildingType get(String type){        
+
+    /**
+     *
+     * @param type
+     * @return
+     */
+    public static BuildingType get(String type) {
         return BuildingType.findById(getId(type));
     }
 
+    /**
+     *
+     * @param tags
+     * @param values
+     * @return
+     */
     public static int insert(String[] tags, String[] values) {
         try {
             BuildingType aux = new BuildingType();
@@ -26,6 +36,13 @@ public class BuildingTypeController {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param tags
+     * @param values
+     * @return
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             BuildingType e = BuildingType.findFirst("id = ?", id);
@@ -39,6 +56,11 @@ public class BuildingTypeController {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static int delete(int id) {
         try {
             BuildingType e = BuildingType.findFirst("id = ?", id);
@@ -50,20 +72,33 @@ public class BuildingTypeController {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<BuildingType> listAll() {
         return BuildingType.findAll();
     }
-        
+
+    /**
+     *
+     * @param tag
+     * @param value
+     * @return
+     */
     public static List<BuildingType> listSelect(String tag, int value) {
         return BuildingType.find(tag + " = ?", value);
     }
-    
 
+    /**
+     *
+     * @param type
+     * @return
+     */
     public static int getId(String type) {//arreglar = que el building
         try {
             return (Integer) (BuildingType.findFirst("type = ? ", type).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

@@ -4,6 +4,7 @@
  */
 package com.unrc.app.controllers;
 
+import com.unrc.app.models.Adress;
 import com.unrc.app.models.Building;
 import java.util.List;
 
@@ -12,11 +13,22 @@ import java.util.List;
  * @author lprone
  */
 public class BuildingController {
-    
-    public static Building get(String name){        
-        return Building.findById(getId(name));
+
+    /**
+     *
+     * @param a
+     * @return
+     */
+    public static Building get(Adress a) {
+        return Building.findById(getId(a));
     }
 
+    /**
+     *
+     * @param tags
+     * @param values
+     * @return
+     */
     public static int insert(String[] tags, String[] values) {
         try {
             Building aux = new Building();
@@ -28,6 +40,13 @@ public class BuildingController {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param tags
+     * @param values
+     * @return
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             Building e = Building.findFirst("id = ?", id);
@@ -41,6 +60,11 @@ public class BuildingController {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public static int delete(int id) {
         try {
             Building e = Building.findFirst("id = ?", id);
@@ -52,20 +76,33 @@ public class BuildingController {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Building> listAll() {
         return Building.findAll();
     }
-        
+
+    /**
+     *
+     * @param tag
+     * @param value
+     * @return
+     */
     public static List<Building> listSelect(String tag, int value) {
         return Building.find(tag + " = ?", value);
     }
-    
 
-    public static int getId(String name) {//arreglar no tiene name
+    /**
+     *
+     * @param a
+     * @return
+     */
+    public static int getId(Adress a) {//arreglar no tiene name
         try {
-            return (Integer) (Building.findFirst("name = ? ", name).get("id"));
+            return (Integer) (Building.findFirst("street = ? and number = ? and city_id = ? and district_id = ? ", a.getStreet(), a.getNumber(), a.getCity(), a.getDistrict()).get("id"));
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
