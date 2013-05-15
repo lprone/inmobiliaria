@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class BuildingTypeController {
     
-    public static BuildingType get(String name){        
-        return BuildingType.findById(getId(name));
+    public static BuildingType get(String type){        
+        return BuildingType.findById(getId(type));
     }
 
     public static int insert(String[] tags, String[] values) {
@@ -59,9 +59,9 @@ public class BuildingTypeController {
     }
     
 
-    public static int getId(String name) {//arreglar = que el building
+    public static int getId(String type) {//arreglar = que el building
         try {
-            return (Integer) (Building.findFirst("name = ? ", name).get("id"));
+            return (Integer) (BuildingType.findFirst("type = ? ", type).get("id"));
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

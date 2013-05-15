@@ -27,5 +27,11 @@ public class Inmo {
         RealEstateController.assignOwner(RealEstateController.get("myInmo"), OwnerController.get("Lucas"));
 
         System.out.println(DistrictController.listSelect("city_id", 1));
+
+        System.out.println("------probando-----");
+
+        System.out.println(BuildingTypeController.get("farm"));
+
+        System.out.println(BuildingTypeController.listAll());
     }
 }

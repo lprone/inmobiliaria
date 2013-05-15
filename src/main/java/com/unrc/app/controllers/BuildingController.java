@@ -61,7 +61,7 @@ public class BuildingController {
     }
     
 
-    public static int getId(String name) {
+    public static int getId(String name) {//arreglar no tiene name
         try {
             return (Integer) (Building.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
