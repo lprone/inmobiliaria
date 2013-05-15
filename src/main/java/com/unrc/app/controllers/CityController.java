@@ -12,6 +12,10 @@ import java.util.List;
  * @author lprone
  */
 public class CityController {
+    
+    public static City get(String name){        
+        return City.findById(getId(name));
+    }
 
     public static int insert(String name) {
         try {

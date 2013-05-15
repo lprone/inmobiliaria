@@ -12,6 +12,10 @@ import java.util.List;
  * @author gCoria
  */
 public class OwnerController {
+    
+    public static Owner get(String name){        
+        return Owner.findById(getId(name));
+    }
 
     public static int insert(String[] tags, String[] values) {
         try {
@@ -50,6 +54,10 @@ public class OwnerController {
 
     public static List<Owner> list() {
         return Owner.findAll();
+    }
+
+    public static List<Owner> listSelect(String tag, int value) {
+        return Owner.find(tag + " = ?", value);
     }
 
     public static int getId(String name) {

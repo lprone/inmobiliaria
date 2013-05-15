@@ -15,7 +15,7 @@ public class OwnerSpec {
 
     @Before
     public void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "1");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
         Base.openTransaction();
     }
 
@@ -43,7 +43,7 @@ public class OwnerSpec {
 
     @Test
     public void testGetOwnerId() {
-        assertEquals((OwnerController.getId("owner")), -1);
+        assertEquals((OwnerController.getId("Lucas")), 1);
         assertEquals((OwnerController.getId("")), -1);
     }
 }

@@ -4,24 +4,22 @@
  */
 package com.unrc.app.controllers;
 
-import com.mysql.jdbc.EscapeTokenizer;
-import com.unrc.app.models.Owner;
-import com.unrc.app.models.RealEstate;
+import com.unrc.app.models.Building;
 import java.util.List;
 
 /**
  *
  * @author lprone
  */
-public class RealEstateController {
+public class BuildingController {
     
-    public static RealEstate get(String name){        
-        return RealEstate.findById(getId(name));
+    public static Building get(String name){        
+        return Building.findById(getId(name));
     }
 
     public static int insert(String[] tags, String[] values) {
         try {
-            RealEstate aux = new RealEstate();
+            Building aux = new Building();
             aux.set(tags, values);
             aux.saveIt();
             return 0;
@@ -32,7 +30,7 @@ public class RealEstateController {
 
     public static int update(int id, String[] tags, String[] values) {
         try {
-            RealEstate e = RealEstate.findFirst("id = ?", id);
+            Building e = Building.findFirst("id = ?", id);
             for (int i = 0; i < tags.length; i++) {
                 e.set(tags[i], values[i]).saveIt();
             }
@@ -45,7 +43,7 @@ public class RealEstateController {
 
     public static int delete(int id) {
         try {
-            RealEstate e = RealEstate.findFirst("id = ?", id);
+            Building e = Building.findFirst("id = ?", id);
             e.delete();
             return 0;
         } catch (Exception e) {
@@ -54,26 +52,18 @@ public class RealEstateController {
         }
     }
 
-    public static List<RealEstate> list() {
-        return RealEstate.findAll();
+    public static List<Building> listAll() {
+        return Building.findAll();
     }
-
-    public static int assignOwner(RealEstate e, Owner o) {
-        try {
-                e.add(o);           
-            return 1;
-        } catch (Exception ex) {
-            return 0;
-        }
+        
+    public static List<Building> listSelect(String tag, int value) {
+        return Building.find(tag + " = ?", value);
     }
-
-    public static List<RealEstate> listSelect(String tag, int value) {
-        return RealEstate.find(tag + " = ?", value);
-    }
+    
 
     public static int getId(String name) {
         try {
-            return (Integer) (RealEstate.findFirst("name = ? ", name).get("id"));
+            return (Integer) (Building.findFirst("name = ? ", name).get("id"));
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
