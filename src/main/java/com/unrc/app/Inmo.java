@@ -3,6 +3,7 @@ package com.unrc.app;
 import com.unrc.app.controllers.*;
 import com.unrc.app.models.*;
 import com.unrc.app.db.DB;
+import com.unrc.app.searchEngine.*;
 import java.util.List;
 
 import org.javalite.activejdbc.Base;
