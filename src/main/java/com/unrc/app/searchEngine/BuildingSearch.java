@@ -15,66 +15,65 @@ import java.util.List;
 public class BuildingSearch {
 
     /**
-     * 
+     *
      * @param city
-     * @return 
+     * @return
      */
     public static List<Building> searchForCity(String city) {
-        throw new UnsupportedOperationException("Not Implemented.");
+        return BuildingController.listSelect("city_id", CityController.getId(city));
     }
 
     /**
-     * 
+     *
      * @param d
-     * @return 
+     * @return
      */
     public static List<Building> searchForDistrict(String d) {
-        throw new UnsupportedOperationException("Not Implemented.");
+        return BuildingController.listSelect("district_id", DistrictController.getId(d));
     }
 
     /**
-     * 
+     *
      * @param bt
-     * @return 
+     * @return
      */
     public static List<Building> searchForBuildingType(String bt) {
-        throw new UnsupportedOperationException("Not Implemented.");
+        return BuildingController.listSelect("building_type_id", BuildingTypeController.getId(bt));
     }
 
     /**
-     * 
-     * @param minPrice
+     *     
      * @param maxPrice
-     * @return 
+     * @return
      */
-    public static List<Building> searchForPriceBetween(float minPrice, float maxPrice) {
+    public static List<Building> searchForPriceBetween(int maxPrice) {//implementa prone garca
         throw new UnsupportedOperationException("Not Implemented.");
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static List<Building> searchForOwner(String name) {
-        throw new UnsupportedOperationException("Not Implemented.");
+        return BuildingController.listSelect("owner_id", OwnerController.getId(name));
     }
 
     /**
-     * 
-     * @param name
-     * @return 
+     *
+     * @param value
+     * @return
      */
-    public static List<Building> searchToSale(String name) {
-        throw new UnsupportedOperationException("Not Implemented.");
+    public static List<Building> searchToSale(int value) {
+        return BuildingController.listSelect("sale", value);
     }
 
     /**
-     * 
-     * @param name
-     * @return 
+     *
+     * @param value
+     * @return
      */
-    public static List<Building> searchToRent(String name) {
-        throw new UnsupportedOperationException("Not Implemented.");
+    public static List<Building> searchToRent(int value) {
+        return BuildingController.listSelect("rent", value);
     }
 }
