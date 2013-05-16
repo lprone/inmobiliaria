@@ -1,6 +1,7 @@
 package com.unrc.app;
 
 import com.unrc.app.controllers.UserController;
+import com.unrc.app.db.DB;
 import com.unrc.app.models.User;        
 
 import org.javalite.activejdbc.Base;
@@ -15,7 +16,7 @@ public class UserSpec {
 
     @Before
     public void before() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
+        Base.open(DB.driver, DB.url, DB.user, DB.password);
         Base.openTransaction();
     }
 
