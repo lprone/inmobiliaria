@@ -80,6 +80,7 @@ public class BuildingController {
      *
      * @return
      */
+
     public static List<Building> listAll() {
         return Building.findAll();
     }
@@ -99,7 +100,7 @@ public class BuildingController {
      * @param a
      * @return
      */
-    public static int getId(Adress a) {//arreglar no tiene name
+    public static int getId(Adress a) {
         try {
             return (Integer) (Building.findFirst("street = ? and number = ? and city_id = ? and district_id = ? ", a.getStreet(), a.getNumber(), a.getCity(), a.getDistrict()).get("id"));
         } catch (Exception e) {
