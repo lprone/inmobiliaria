@@ -13,36 +13,36 @@ import com.unrc.app.models.Adress;
 public class AdressController {
 
     /**
-     * 
+     *
      * @param a
-     * @return 
+     * @return
      */
     public static String getStreet(Adress a) {
         return a.getStreet();
     }
 
     /**
-     * 
+     *
      * @param a
-     * @return 
+     * @return
      */
     public static int getDistrict(Adress a) {
         return a.getDistrict();
     }
 
     /**
-     * 
+     *
      * @param a
-     * @return 
+     * @return
      */
     public static int getCity(Adress a) {
         return a.getCity();
     }
 
     /**
-     * 
+     *
      * @param a
-     * @return 
+     * @return
      */
     public static int getNumber(Adress a) {
         return a.getNumber();

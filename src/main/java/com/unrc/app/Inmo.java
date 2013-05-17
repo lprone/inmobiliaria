@@ -14,7 +14,5 @@ public class Inmo {
 
     public static void main(String[] args) {
         Base.open(DB.driver, DB.url, DB.user, DB.password);
-        System.out.print(BuildingSearch.searchForCity("Rio Cuarto"));
-    	System.out.print(BuildingSearch.searchForDistrict("Alberdi"));
     }
 }

@@ -80,7 +80,6 @@ public class BuildingController {
      *
      * @return
      */
-
     public static List<Building> listAll() {
         return Building.findAll();
     }
@@ -92,7 +91,7 @@ public class BuildingController {
      * @return
      */
     public static List<Building> listSelect(String tag, int value) {
-        return Building.find(tag + " = ?", value);
+        return Building.where(tag, value);
     }
 
     /**

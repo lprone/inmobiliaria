@@ -95,7 +95,7 @@ public class BuildingTypeController {
      * @param type
      * @return
      */
-    public static int getId(String type) {//arreglar = que el building
+    public static int getId(String type) {
         try {
             return (Integer) (BuildingType.findFirst("type = ? ", type).get("id"));
         } catch (Exception e) {

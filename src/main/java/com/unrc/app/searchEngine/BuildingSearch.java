@@ -20,7 +20,7 @@ public class BuildingSearch {
      * @return
      */
     public static List<Building> searchForCity(String city) {
-        return BuildingController.listSelect("city_id", CityController.getId(city));
+        return BuildingController.listSelect("city_id = ?", CityController.getId(city));
     }
 
     /**
@@ -29,7 +29,7 @@ public class BuildingSearch {
      * @return
      */
     public static List<Building> searchForDistrict(String d) {
-        return BuildingController.listSelect("district_id", DistrictController.getId(d));
+        return BuildingController.listSelect("district_id = ?", DistrictController.getId(d));
     }
 
     /**
@@ -38,16 +38,16 @@ public class BuildingSearch {
      * @return
      */
     public static List<Building> searchForBuildingType(String bt) {
-        return BuildingController.listSelect("building_type_id", BuildingTypeController.getId(bt));
+        return BuildingController.listSelect("building_type_id = ?", BuildingTypeController.getId(bt));
     }
 
     /**
-     *     
+     *
      * @param maxPrice
      * @return
      */
-    public static List<Building> searchForPriceBetween(int maxPrice) {//implementa prone garca
-        throw new UnsupportedOperationException("Not Implemented.");
+    public static List<Building> searchForMaxPrice(int maxPrice) {
+        return BuildingController.listSelect("price <= ?", maxPrice);
     }
 
     /**
@@ -56,7 +56,7 @@ public class BuildingSearch {
      * @return
      */
     public static List<Building> searchForOwner(String name) {
-        return BuildingController.listSelect("owner_id", OwnerController.getId(name));
+        return BuildingController.listSelect("owner_id = ?", OwnerController.getId(name));
     }
 
     /**
@@ -65,7 +65,7 @@ public class BuildingSearch {
      * @return
      */
     public static List<Building> searchToSale(int value) {
-        return BuildingController.listSelect("sale", value);
+        return BuildingController.listSelect("sale = ?", value);
     }
 
     /**
@@ -73,7 +73,7 @@ public class BuildingSearch {
      * @param value
      * @return
      */
-    public static List<Building> searchToRent(int value) {
-        return BuildingController.listSelect("rent", value);
+    public static List<Building> searchToRental(int value) {
+        return BuildingController.listSelect("rental = ?", value);
     }
 }
