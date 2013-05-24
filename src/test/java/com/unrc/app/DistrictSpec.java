@@ -47,7 +47,7 @@ public class DistrictSpec {
 
     @Test
     public void testGetInmobiliariaId() {
-        assertEquals((DistrictController.getId("Centro")), 1);
+        assertEquals("No son iguales",(DistrictController.getId("Centro")), 1);
         assertEquals((DistrictController.getId("")), -1);
     }
 }

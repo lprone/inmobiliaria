@@ -44,7 +44,7 @@ public class CitySpec {
 
     @Test
     public void testGetId() {
-        assertEquals((CityController.getId("Rio Cuarto")), 1);
+        assertEquals("No son iguales",(CityController.getId("Rio Cuarto")), 1);
         assertEquals((CityController.getId("")), -1);
     }
 }

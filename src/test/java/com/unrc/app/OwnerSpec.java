@@ -44,7 +44,7 @@ public class OwnerSpec {
 
     @Test
     public void testGetOwnerId() {
-        assertEquals((OwnerController.getId("Lucas")), 1);
+        assertEquals("No son iguales",(OwnerController.getId("Lucas")), 1);
         assertEquals((OwnerController.getId("")), -1);
     }
 }

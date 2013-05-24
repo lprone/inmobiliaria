@@ -44,7 +44,7 @@ public class RealEstateSpec {
 
     @Test
     public void testGetInmobiliariaId() {
-        assertEquals((RealEstateController.getId("myInmo")), 1);
+        assertEquals( "No son iguales",(RealEstateController.getId("myInmo")), 1);
         assertEquals((RealEstateController.getId("")), -1);
     }
 }

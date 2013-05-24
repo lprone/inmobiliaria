@@ -44,7 +44,7 @@ public class BuildingTypeSpec {
 
     @Test
     public void testGetId() {
-        assertEquals((BuildingTypeController.getId("land")), 1);
+        assertEquals("No son iguales",(BuildingTypeController.getId("land")), 1);
         assertEquals((BuildingTypeController.getId("")), -1);
     }
 }
