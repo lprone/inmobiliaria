@@ -12,14 +12,14 @@ import java.util.List;
  * @author lprone
  */
 public class UserController {
-    
+
     /**
-     * 
+     *
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
-     public static int insert(String[] tags, String[] values) {
+    public static int insert(String[] tags, String[] values) {
         try {
             User aux = new User();
             aux.set(tags, values);
@@ -30,13 +30,13 @@ public class UserController {
         }
     }
 
-     /**
-      * 
-      * @param id
-      * @param tags
-      * @param values
-      * @return 
-      */
+    /**
+     *
+     * @param id
+     * @param tags
+     * @param values
+     * @return
+     */
     public static int update(int id, String[] tags, String[] values) {
         try {
             User e = User.findFirst("id = ?", id);
@@ -45,15 +45,14 @@ public class UserController {
             }
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
     public static int delete(int id) {
         try {
@@ -61,24 +60,23 @@ public class UserController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static List<User> list() {
         return User.findAll();
     }
 
     /**
-     * 
+     *
      * @param first_name
      * @param last_name
-     * @return 
+     * @return
      */
     public static int getId(String first_name, String last_name) {
         try {
@@ -86,5 +84,5 @@ public class UserController {
         } catch (Exception e) {
             return -1;
         }
-    }    
+    }
 }

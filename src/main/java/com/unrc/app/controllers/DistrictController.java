@@ -14,10 +14,10 @@ import java.util.List;
 public class DistrictController {
 
     /**
-     * 
+     *
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int insert(String[] tags, String[] values) {
         try {
@@ -31,11 +31,11 @@ public class DistrictController {
     }
 
     /**
-     * 
+     *
      * @param id
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int update(int id, String[] tags, String[] values) {
         try {
@@ -45,15 +45,14 @@ public class DistrictController {
             }
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
     public static int delete(int id) {
         try {
@@ -61,33 +60,32 @@ public class DistrictController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static List<District> list() {
         return District.findAll();
     }
 
     /**
-     * 
+     *
      * @param tag
      * @param value
-     * @return 
+     * @return
      */
     public static List<District> listSelect(String tag, int value) {
         return District.find(tag + " = ?", value);
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static int getId(String name) {
         try {

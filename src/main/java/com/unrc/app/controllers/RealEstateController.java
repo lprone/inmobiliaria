@@ -16,19 +16,19 @@ import java.util.List;
 public class RealEstateController {
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static RealEstate get(String name) {
         return RealEstate.findById(getId(name));
     }
 
     /**
-     * 
+     *
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int insert(String[] tags, String[] values) {
         try {
@@ -42,11 +42,11 @@ public class RealEstateController {
     }
 
     /**
-     * 
+     *
      * @param id
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int update(int id, String[] tags, String[] values) {
         try {
@@ -56,15 +56,14 @@ public class RealEstateController {
             }
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
     public static int delete(int id) {
         try {
@@ -72,24 +71,23 @@ public class RealEstateController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static List<RealEstate> list() {
         return RealEstate.findAll();
     }
 
     /**
-     * 
+     *
      * @param e
      * @param o
-     * @return 
+     * @return
      */
     public static int assignOwner(RealEstate e, Owner o) {
         try {
@@ -101,19 +99,19 @@ public class RealEstateController {
     }
 
     /**
-     * 
+     *
      * @param tag
      * @param value
-     * @return 
+     * @return
      */
     public static List<RealEstate> listSelect(String tag, int value) {
         return RealEstate.find(tag + " = ?", value);
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static int getId(String name) {
         try {

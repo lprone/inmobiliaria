@@ -13,19 +13,53 @@ import org.slf4j.LoggerFactory;
 import static spark.Spark.*;
 import spark.*;
 
-
 public class Inmo {
 
-	    public static void main(String[] args) {
-        Base.open(DB.driver, DB.url, DB.user, DB.password);
-    	
-    	get(new Route("/hello") {
-         @Override
-         public Object handle(Request request, Response response) {
-            return "Hello World!";
-         }//para ver el hello world en el buscador pongan http://localhost:4567/hello
-      	});
+    public static void main(String[] args) {
 
+        /**
+         *
+         */
+        get(new Route("/hello") {
+            @Override
+            public Object handle(Request request, Response response) {
+                return "Hello World!";
+            }//para ver el hello world en el buscador pongan http://localhost:4567/hello
+        });
+
+        /**
+         *
+         */
+        get(new Route("/owners/:id") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return OwnerController.get(new Integer(request.params(":id"))).toString();//                
+            }//http://localhost:4567/owners/1
+        });
+
+        /**
+         *
+         */
+        get(new Route("/ownersList") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return OwnerController.list();
+            }// http://localhost:4567/ownersList
+        });
+
+
+        /**
+         *
+         */
+        get(new Route("/cityList") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return CityController.list();
+            }// http://localhost:4567/cityList
+        });
 
     }
 }

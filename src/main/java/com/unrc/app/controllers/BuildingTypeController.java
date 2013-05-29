@@ -51,7 +51,6 @@ public class BuildingTypeController {
             }
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
@@ -67,7 +66,6 @@ public class BuildingTypeController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

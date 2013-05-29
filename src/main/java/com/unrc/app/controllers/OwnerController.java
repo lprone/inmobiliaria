@@ -12,21 +12,30 @@ import java.util.List;
  * @author gCoria
  */
 public class OwnerController {
-    
+
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
-    public static Owner get(String name){        
+    public static Owner get(int id) {
+        return Owner.findById(id);
+    }
+
+    /**
+     *
+     * @param name
+     * @return
+     */
+    public static Owner get(String name) {
         return Owner.findById(getId(name));
     }
 
     /**
-     * 
+     *
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int insert(String[] tags, String[] values) {
         try {
@@ -40,11 +49,11 @@ public class OwnerController {
     }
 
     /**
-     * 
+     *
      * @param id
      * @param tags
      * @param values
-     * @return 
+     * @return
      */
     public static int update(int id, String[] tags, String[] values) {
         try {
@@ -54,15 +63,14 @@ public class OwnerController {
             }
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
     public static int delete(int id) {
         try {
@@ -70,33 +78,32 @@ public class OwnerController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static List<Owner> list() {
         return Owner.findAll();
     }
 
     /**
-     * 
+     *
      * @param tag
      * @param value
-     * @return 
+     * @return
      */
     public static List<Owner> listSelect(String tag, int value) {
         return Owner.find(tag + " = ?", value);
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static int getId(String name) {
         try {

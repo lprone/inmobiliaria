@@ -12,20 +12,20 @@ import java.util.List;
  * @author lprone
  */
 public class CityController {
-    
+
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
-    public static City get(String name){        
+    public static City get(String name) {
         return City.findById(getId(name));
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static int insert(String name) {
         try {
@@ -37,10 +37,10 @@ public class CityController {
     }
 
     /**
-     * 
+     *
      * @param id
      * @param name
-     * @return 
+     * @return
      */
     public static int update(int id, String name) {
         try {
@@ -48,15 +48,14 @@ public class CityController {
             e.set("name", name).saveIt();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
+     *
      * @param id
-     * @return 
+     * @return
      */
     public static int delete(int id) {
         try {
@@ -64,23 +63,22 @@ public class CityController {
             e.delete();
             return 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static List<City> list() {
         return City.findAll();
     }
 
     /**
-     * 
+     *
      * @param name
-     * @return 
+     * @return
      */
     public static int getId(String name) {
         try {
