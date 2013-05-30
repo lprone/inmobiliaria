@@ -7,4 +7,9 @@ public class City extends Model {
     static {
         validatePresenceOf("name");
     }
+
+    @Override
+    public String toString() {
+        return getString("name");
+    }
 }

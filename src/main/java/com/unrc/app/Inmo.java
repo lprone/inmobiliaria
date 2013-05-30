@@ -33,6 +33,7 @@ public class Inmo {
         get(new Route("/owners/:id") {
             @Override
             public Object handle(Request request, Response response) {
+                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 return OwnerController.get(new Integer(request.params(":id"))).toString();//                
             }//http://localhost:4567/owners/1
@@ -44,6 +45,7 @@ public class Inmo {
         get(new Route("/ownersList") {
             @Override
             public Object handle(Request request, Response response) {
+                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 return OwnerController.list();
             }// http://localhost:4567/ownersList
@@ -56,6 +58,7 @@ public class Inmo {
         get(new Route("/cityList") {
             @Override
             public Object handle(Request request, Response response) {
+                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 return CityController.list();
             }// http://localhost:4567/cityList
