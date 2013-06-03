@@ -15,6 +15,52 @@ import java.util.List;
 public class BuildingSearch {
 
     /**
+     * 
+     * @param city
+     * @param d
+     * @param bt
+     * @param maxPrice
+     * @param name
+     * @param sale
+     * @param rental
+     * @return 
+     */
+    public static List<Building> searchAll(String city, String d, String bt, int maxPrice, String name, int sale, int rental) {
+        String query = "";
+
+        if (city != null) {
+            query += ("city_id = " + CityController.getId(city));
+        }
+        if (d != null) {
+            query += (" && district_id = " + DistrictController.getId(d));
+        }
+
+        if (bt != null) {
+            query += (" && building_type_id = " + BuildingTypeController.getId(bt));
+        }
+
+        if (maxPrice >= 0) {
+            query += (" && price <= " + maxPrice);
+        }
+
+        if (name != null) {
+            query += (" && owner_id = " + OwnerController.getId(name));
+        }
+
+        if (sale != -1) {
+            query += (" && sale = " + sale);
+        }
+
+        if (rental != -1) {
+            query += (" && rental = " + rental);
+        }
+
+        query = query.startsWith(" &&") ? query.substring(3) : query;
+        
+        return BuildingController.listSelect(query);
+    }
+
+    /**
      *
      * @param city
      * @return

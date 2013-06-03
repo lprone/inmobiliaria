@@ -81,6 +81,15 @@ public class BuildingController {
     public static List<Building> listAll() {
         return Building.findAll();
     }
+    
+    /**
+     *
+     * @param query
+     * @return
+     */
+    public static List<Building> listSelect(String query) {
+        return Building.where(query);
+    }
 
     /**
      *

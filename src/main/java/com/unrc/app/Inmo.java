@@ -17,6 +17,9 @@ public class Inmo {
 
     public static void main(String[] args) {
 
+//        Base.open(DB.driver, DB.url, DB.user, DB.password);
+//        System.out.println(BuildingSearch.searchAll(null, null, null, 250000, "Lucas", -1, -1));
+
         /**
          *
          */
