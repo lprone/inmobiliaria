@@ -91,7 +91,7 @@ public class Inmo {
             public Object handle(Request request, Response response) {
                 Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.search();
+                return HTML.search(CityController.list(),DistrictController.list(),OwnerController.list(),BuildingTypeController.listAll());
             }// http://localhost:4567/search
         });
 
@@ -117,7 +117,7 @@ public class Inmo {
             public Object handle(Request request, Response response) {
                 Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.saveOwner();
+                return HTML.saveCity();
             }// http://localhost:4567/saveCity
         });
 
@@ -131,7 +131,7 @@ public class Inmo {
                 Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 CityController.insert(nombre);
-                return HTML.saveOwner();
+                return "Ciudad agreada correctamente";
             }// http://localhost:4567/saveCity
         });
 

@@ -4,6 +4,7 @@
  */
 package com.unrc.app.html;
 
+import com.unrc.app.models.*;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class HTML {
                 + "<body>\n"
                 + "<p><a href=\"/search\">BuscarInmueble</a></p>\n"
                 + "<p><a href=\"/saveCity\">InsertarCiudad</a></p>\n"
-                + "<p><a href=\"/search\">InsertarDueño</a></p>\n"
+                //                + "<p><a href=\"/search\">InsertarDueño</a></p>\n"
                 + "<p><a href=\"/cityList\">VerCiudades</a></p>\n"
                 + "</body>\n"
                 + "</html>";
@@ -48,7 +49,7 @@ public class HTML {
 
     }
 
-    public static String saveCiudad() {
+    public static String saveCity() {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
@@ -64,10 +65,7 @@ public class HTML {
                 + "<body>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>\n"
-                + "  <div align=\"center\">Cod Postal\n"
-                + "    <input name=\"id\" type=\"text\" id=\"id\" />\n"
-                + "    <br />\n"
-                + "    <br />\n"
+                + "  <div align=\"center\">\n"
                 + "  Nombre\n"
                 + "  <input name=\"name\" type=\"text\" id=\"name\" />\n"
                 + "  <br />\n"
@@ -76,7 +74,8 @@ public class HTML {
                 + "  </div>\n"
                 + "  </label>\n"
                 + "</form>\n"
-                + "</body>";
+                + "</body>\n"
+                + "</html>";
         return ret;
     }
 
@@ -144,7 +143,7 @@ public class HTML {
         return "";
     }
 
-    public static String search() {
+    public static String search(List<City> cities, List<District> districts, List<Owner> owners, List<BuildingType> buildingTypes) {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
@@ -158,45 +157,44 @@ public class HTML {
                 + "  <label></label>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>city\n"
-                + "    <select name=\"city_id\" id=\"city_id\">\n"
-                + "      <option value=\"1\">Rio Cuarto</option>\n"
-                + "      <option value=\"2\">Cordoba</option>\n"
-                + "    </select>\n"
+                + "    <select name=\"city_id\" id=\"city_id\">\n";
+        for (City c : cities) {
+            ret += "<option value=\"" + c.getString("id") + "\">" + c.getString("name") + "</option>";
+        }
+
+        ret += "    </select>\n"
                 + "    </label>\n"
                 + "</p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>distict\n"
-                + "    <select name=\"district_id\" id=\"district_id\">\n"
-                + "      <option value=\"1\">Centro</option>\n"
-                + "      <option value=\"2\">Alberdi</option>\n"
-                + "      <option value=\"3\">Universidad</option>\n"
-                + "      <option value=\"4\">Banda Norte</option>\n"
-                + "    </select>\n"
+                + "    <select name=\"district_id\" id=\"district_id\">\n";
+        for (District d : districts) {
+            ret += "<option value=\"" + d.getString("id") + "\">" + d.getString("name") + "</option>";
+        }
+
+        ret += "    </select>\n"
                 + "  </label></p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>building Type\n"
-                + "    <select name=\"building_type_id\" id=\"building_type_id\">\n"
-                + "      <option value=\"1\">land</option>\n"
-                + "      <option value=\"2\">farm</option>\n"
-                + "      <option value=\"3\">house</option>\n"
-                + "      <option value=\"4\">department</option>\n"
-                + "      <option value=\"5\">office</option>\n"
-                + "      <option value=\"6\">garage</option>\n"
-                + "    </select>\n"
+                + "    <select name=\"building_type_id\" id=\"building_type_id\">\n";
+        for (BuildingType b : buildingTypes) {
+            ret += "<option value=\"" + b.getString("id") + "\">" + b.getString("type") + "</option>";
+        }
+        ret += "    </select>\n"
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>maxPrice\n"
-                + "    <input type=\"text\" name=\"textfield3\" />\n"
+                + "    <input type=\"text\" name=\"maxPrice\" />\n"
                 + "    </label>\n"
                 + "</p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>owner\n"
-                + "    <select name=\"owner_id\" id=\"owner_id\">\n"
-                + "      <option value=\"1\">Lucas</option>\n"
-                + "      <option value=\"2\">Gaston</option>\n"
-                + "      <option value=\"3\">Adrian</option>\n"
-                + "    </select>\n"
+                + "    <select name=\"owner_id\" id=\"owner_id\">\n";
+        for (Owner o : owners) {
+            ret += "<option value=\"" + o.getString("id") + "\">" + o.getString("name") + "</option>";
+        }
+        ret += "    </select>\n"
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p align=\"center\">\n"
