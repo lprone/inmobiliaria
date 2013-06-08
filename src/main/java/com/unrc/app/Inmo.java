@@ -38,9 +38,10 @@ public class Inmo {
         get(new Route("/owners/:id") {
             @Override
             public Object handle(Request request, Response response) {
-                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return OwnerController.get(new Integer(request.params(":id"))).toString();//                
+                String ret = OwnerController.get(new Integer(request.params(":id"))).toString();;
+                Base.close();
+                return ret;
             }//http://localhost:4567/owners/1
         });
 
@@ -50,9 +51,14 @@ public class Inmo {
         get(new Route("/ownersList") {
             @Override
             public Object handle(Request request, Response response) {
-                Base.close();
+
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return OwnerController.list();
+                String ret = "";
+                for (Owner o : OwnerController.list()) {
+                    ret += o.toString();
+                }
+                Base.close();
+                return ret;
             }// http://localhost:4567/ownersList
         });
 
@@ -63,9 +69,10 @@ public class Inmo {
         get(new Route("/cityList") {
             @Override
             public Object handle(Request request, Response response) {
-                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.show(CityController.list());
+                String ret = HTML.show(CityController.list());
+                Base.close();
+                return ret;
             }// http://localhost:4567/cityList
         });
 
@@ -83,17 +90,9 @@ public class Inmo {
             }//para ver el hello world en el buscador pongan http://localhost:4567/index
         });
 
-        /**
-         *
+        /*
+         * -------------------------------
          */
-        get(new Route("/search") {
-            @Override
-            public Object handle(Request request, Response response) {
-                Base.close();
-                Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.search(CityController.list(),DistrictController.list(),OwnerController.list(),BuildingTypeController.listAll());
-            }// http://localhost:4567/search
-        });
 
         /**
          *
@@ -101,13 +100,16 @@ public class Inmo {
         post(new Route("/saveOwner") {
             @Override
             public Object handle(Request request, Response response) {
-
-                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.saveOwner();
+                String ret = HTML.saveCity();
+                Base.close();
+                return ret;
             }// http://localhost:4567/saveOwner
         });
 
+        /*
+         * -------------------------------
+         */
 
         /**
          *
@@ -115,9 +117,10 @@ public class Inmo {
         get(new Route("/saveCity") {
             @Override
             public Object handle(Request request, Response response) {
-                Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return HTML.saveCity();
+                String ret = HTML.saveCity();
+                Base.close();
+                return ret;
             }// http://localhost:4567/saveCity
         });
 
@@ -128,12 +131,48 @@ public class Inmo {
             @Override
             public Object handle(Request request, Response response) {
                 String nombre = request.queryParams("name");
-                Base.close();
+
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 CityController.insert(nombre);
+                Base.close();
                 return "Ciudad agreada correctamente";
             }// http://localhost:4567/saveCity
         });
+
+        /*
+         * -------------------------------
+         */
+
+        /**
+         *
+         */
+        get(new Route("/search") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = "Sin resultados", op = request.queryParams("search");
+                if (op == null) {
+                    ret = HTML.search(CityController.list(), DistrictController.list(), OwnerController.list(), BuildingTypeController.listAll());
+                } else {
+                    String city_id = request.queryParams("city_id");
+                    String district_id = request.queryParams("district_id");
+                    String building_type_id = request.queryParams("building_type_id");
+                    String owner_id = request.queryParams("owner_id");
+                    String maxPrice = request.queryParams("maxPrice");
+                    String sale = request.queryParams("sale");
+                    String rental = request.queryParams("rental");
+                    System.out.println(city_id + " " + district_id + " " + building_type_id + " " + owner_id + " " + maxPrice + " " + sale + " " + rental);
+                    try {
+                        ret = HTML.show(BuildingSearch.searchAll(city_id, district_id, building_type_id, maxPrice, owner_id, sale, rental));
+                    } catch (Exception e) {
+                    }
+
+                }
+                Base.close();
+                return ret;
+            }// http://localhost:4567/search
+        });
+
 
 
     }

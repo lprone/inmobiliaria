@@ -16,46 +16,48 @@ public class BuildingSearch {
 
     /**
      *
-     * @param city
-     * @param d
-     * @param bt
+     * @param city_id
+     * @param dst_id
+     * @param bt_id
      * @param maxPrice
-     * @param name
+     * @param owr_id
      * @param sale
      * @param rental
      * @return
      */
-    public static List<Building> searchAll(String city, String d, String bt, int maxPrice, String name, int sale, int rental) {
+    public static List<Building> searchAll(String city_id, String dst_id, String bt_id, String maxPrice, String owr_id, String sale, String rental) {
         String query = "";
 
-        if (city != null) {
-            query += ("city_id = " + CityController.getId(city));
+        if (city_id != null) {
+            query += ("city_id = " + new Integer(city_id));
         }
-        if (d != null) {
-            query += (" && district_id = " + DistrictController.getId(d));
-        }
-
-        if (bt != null) {
-            query += (" && building_type_id = " + BuildingTypeController.getId(bt));
+        if (dst_id != null) {
+            query += (" && district_id = " + new Integer(dst_id));
         }
 
-        if (maxPrice >= 0) {
-            query += (" && price <= " + maxPrice);
+        if (bt_id != null) {
+            query += (" && building_type_id = " + new Integer(bt_id));
         }
 
-        if (name != null) {
-            query += (" && owner_id = " + OwnerController.getId(name));
+        if (maxPrice != "") {
+            query += (" && price <= " + new Integer(maxPrice));
         }
 
-        if (sale != -1) {
-            query += (" && sale = " + sale);
+        if (owr_id != null) {
+            query += (" && owner_id = " + new Integer(owr_id));
         }
 
-        if (rental != -1) {
-            query += (" && rental = " + rental);
+        if (sale != null) {
+            query += (" && sale = " + true);
+        }
+
+        if (rental != null) {
+            query += (" && rental = " + true);
         }
 
         query = query.startsWith(" &&") ? query.substring(3) : query;
+
+//        System.out.println(query);
 
         return BuildingController.listSelect(query);
     }

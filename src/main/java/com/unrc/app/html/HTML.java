@@ -6,6 +6,7 @@ package com.unrc.app.html;
 
 import com.unrc.app.models.*;
 import java.util.List;
+import org.javalite.activejdbc.Model;
 
 /**
  *
@@ -18,7 +19,7 @@ public class HTML {
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<title>Index</title>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
@@ -36,7 +37,7 @@ public class HTML {
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<title>Listar</title>\n"
                 + "</head>\n"
                 + "<body>\n";
         for (Object o : l) {
@@ -49,6 +50,14 @@ public class HTML {
 
     }
 
+    private static String setFields(List l, String id, String value) {
+        String ret = "";
+        for (Object c : l) {
+            ret += "<option value=\"" + ((Model) c).getString(id) + "\">" + ((Model) c).getString(value) + "</option>";
+        }
+        return ret;
+    }
+
     public static String saveCity() {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -56,7 +65,7 @@ public class HTML {
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
                 + "<!-- TemplateBeginEditable name=\"doctitle\" -->\n"
-                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<title>Guardar Ciudad</title>\n"
                 + "<!-- TemplateEndEditable -->\n"
                 + "<!-- TemplateBeginEditable name=\"head\" -->\n"
                 + "<!-- TemplateEndEditable -->\n"
@@ -149,7 +158,7 @@ public class HTML {
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<title>Buscar</title>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
@@ -158,28 +167,23 @@ public class HTML {
                 + "  <p align=\"center\">\n"
                 + "    <label>city\n"
                 + "    <select name=\"city_id\" id=\"city_id\">\n";
-        for (City c : cities) {
-            ret += "<option value=\"" + c.getString("id") + "\">" + c.getString("name") + "</option>";
-        }
-
+        ret += setFields(cities, "id", "name");
+//        for (City c : cities) {
+//            ret += "<option value=\"" + c.getString("id") + "\">" + c.getString("name") + "</option>";
+//        }
         ret += "    </select>\n"
                 + "    </label>\n"
                 + "</p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>distict\n"
                 + "    <select name=\"district_id\" id=\"district_id\">\n";
-        for (District d : districts) {
-            ret += "<option value=\"" + d.getString("id") + "\">" + d.getString("name") + "</option>";
-        }
-
+        ret += setFields(districts, "id", "name");
         ret += "    </select>\n"
                 + "  </label></p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>building Type\n"
                 + "    <select name=\"building_type_id\" id=\"building_type_id\">\n";
-        for (BuildingType b : buildingTypes) {
-            ret += "<option value=\"" + b.getString("id") + "\">" + b.getString("type") + "</option>";
-        }
+        ret += setFields(buildingTypes, "id", "type");
         ret += "    </select>\n"
                 + "    </label>\n"
                 + "  </p>\n"
@@ -191,25 +195,23 @@ public class HTML {
                 + "  <p align=\"center\">\n"
                 + "    <label>owner\n"
                 + "    <select name=\"owner_id\" id=\"owner_id\">\n";
-        for (Owner o : owners) {
-            ret += "<option value=\"" + o.getString("id") + "\">" + o.getString("name") + "</option>";
-        }
+        ret += setFields(owners, "id", "name");
         ret += "    </select>\n"
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>\n"
-                + "    <input type=\"checkbox\" name=\"checkbox\" value=\"checkbox\" />\n"
+                + "    <input type=\"checkbox\" name=\"sale\" value=\"true\" />\n"
                 + "    sale</label>\n"
                 + "  </p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>\n"
-                + "    <input type=\"checkbox\" name=\"checkbox2\" value=\"checkbox\" />\n"
+                + "    <input type=\"checkbox\" name=\"rental\" value=\"true\" />\n"
                 + "    rental</label>\n"
                 + "  </p>\n"
                 + "  <p align=\"center\">\n"
                 + "    <label>\n"
-                + "    <input name=\"search\" type=\"submit\" id=\"search\" />\n"
+                + "    <input name=\"search\" type=\"submit\" id=\"search\" onclick=\"MM_goToURL('parent','/index');return document.MM_returnValue\"/>\n"
                 + "    </label></p>\n"
                 + "</form>\n"
                 + "</body>\n"
