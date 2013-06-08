@@ -15,7 +15,7 @@ import java.util.List;
 public class BuildingSearch {
 
     /**
-     * 
+     *
      * @param city
      * @param d
      * @param bt
@@ -23,7 +23,7 @@ public class BuildingSearch {
      * @param name
      * @param sale
      * @param rental
-     * @return 
+     * @return
      */
     public static List<Building> searchAll(String city, String d, String bt, int maxPrice, String name, int sale, int rental) {
         String query = "";
@@ -56,7 +56,7 @@ public class BuildingSearch {
         }
 
         query = query.startsWith(" &&") ? query.substring(3) : query;
-        
+
         return BuildingController.listSelect(query);
     }
 

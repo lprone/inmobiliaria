@@ -10,6 +10,8 @@ import org.javalite.activejdbc.Base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.unrc.app.html.HTML;
+
 import static spark.Spark.*;
 import spark.*;
 
@@ -63,9 +65,76 @@ public class Inmo {
             public Object handle(Request request, Response response) {
                 Base.close();
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                return CityController.list();
+                return HTML.show(CityController.list());
             }// http://localhost:4567/cityList
         });
+
+        /*
+         * ---------------------------------------------------------------------
+         */
+
+        /**
+         *
+         */
+        get(new Route("/index") {
+            @Override
+            public Object handle(Request request, Response response) {
+                return HTML.index();
+            }//para ver el hello world en el buscador pongan http://localhost:4567/index
+        });
+
+        /**
+         *
+         */
+        get(new Route("/search") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.close();
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return HTML.search();
+            }// http://localhost:4567/search
+        });
+
+        /**
+         *
+         */
+        post(new Route("/saveOwner") {
+            @Override
+            public Object handle(Request request, Response response) {
+
+                Base.close();
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return HTML.saveOwner();
+            }// http://localhost:4567/saveOwner
+        });
+
+
+        /**
+         *
+         */
+        get(new Route("/saveCity") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.close();
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                return HTML.saveOwner();
+            }// http://localhost:4567/saveCity
+        });
+
+        /**
+         *
+         */
+        post(new Route("/saveCity") {
+            @Override
+            public Object handle(Request request, Response response) {
+                String nombre = request.queryParams("name");
+                Base.close();
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                CityController.insert(nombre);
+                return HTML.saveOwner();
+            }// http://localhost:4567/saveCity
+        });
+
 
     }
 }
