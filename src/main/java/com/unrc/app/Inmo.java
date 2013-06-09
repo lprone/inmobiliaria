@@ -4,13 +4,11 @@ import com.unrc.app.controllers.*;
 import com.unrc.app.models.*;
 import com.unrc.app.db.DB;
 import com.unrc.app.searchEngine.*;
-import java.util.List;
 
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.unrc.app.html.HTML;
+import java.util.LinkedList;
 
 import static spark.Spark.*;
 import spark.*;
@@ -93,6 +91,19 @@ public class Inmo {
         /*
          * -------------------------------
          */
+        
+         /**
+         *
+         */
+        get(new Route("/saveOwner") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.saveOwner();
+                Base.close();
+                return ret;
+            }// http://localhost:4567/saveOwner
+        });
 
         /**
          *
@@ -101,7 +112,7 @@ public class Inmo {
             @Override
             public Object handle(Request request, Response response) {
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                String ret = HTML.saveCity();
+                String ret = HTML.saveOwner();
                 Base.close();
                 return ret;
             }// http://localhost:4567/saveOwner
@@ -133,7 +144,11 @@ public class Inmo {
                 String nombre = request.queryParams("name");
 
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                CityController.insert(nombre);
+                try {
+                    CityController.insert(nombre);
+                } catch (Exception e) {
+                }
+
                 Base.close();
                 return "Ciudad agreada correctamente";
             }// http://localhost:4567/saveCity
@@ -171,6 +186,59 @@ public class Inmo {
                 Base.close();
                 return ret;
             }// http://localhost:4567/search
+        });
+
+        /*
+         * -------------------------------
+         */
+
+        /**
+         *
+         */
+        get(new Route("/saveBuilding") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.saveBulding(CityController.list(), DistrictController.list(), OwnerController.list(), BuildingTypeController.listAll());
+                Base.close();
+                return ret;
+            }// http://localhost:4567/saveBuilding
+        });
+
+        /**
+         *
+         */
+        post(new Route("/saveBuilding") {
+            @Override
+            public Object handle(Request request, Response response) {
+//                id, building_type_id, owner_id, street, number, city_id, district_id, description, price, sale, rental
+                String[] tags = {
+                    "building_type_id",
+                    "owner_id",
+                    "street",
+                    "number",
+                    "district_id",
+                    "city_id",
+                    "description",
+                    "price",
+                    "sale",
+                    "rental"};
+                String[] values = {
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),
+                    request.queryParams("name"),};
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                BuildingController.insert(tags, values);
+                Base.close();
+                return "Inmueble agreado correctamente";
+            }// http://localhost:4567/saveBuilding
         });
 
 

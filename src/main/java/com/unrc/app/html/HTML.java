@@ -14,23 +14,56 @@ import org.javalite.activejdbc.Model;
  */
 public class HTML {
 
+    /**
+     *
+     * @return
+     */
     public static String index() {
-        return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+//        return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+//                + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+//                + "<head>\n"
+//                + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
+//                + "<title>Index</title>\n"
+//                + "</head>\n"
+//                + "\n"
+//                + "<body>\n"
+//                + "<p><a href=\"/search\">BuscarInmueble</a></p>\n"
+//                + "<p><a href=\"/saveCity\">InsertarCiudad</a></p>\n"
+//                + "<p><a href=\"/saveOwner\">InsertarDueño</a></p>\n"
+//                + "<p><a href=\"/saveBuilding\">InsertarInmueble</a></p>\n"
+//                + "<p><a href=\"/cityList\">VerCiudades</a></p>\n"
+//                + "</body>\n"
+//                + "</html>";
+
+
+
+       return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Index</title>\n"
+                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<style type=\"text/css\">\n"
+                + "<!--\n"
+                + ".Estilo1 {font-family: \"comic Sans MS\"}\n"
+                + "-->\n"
+                + "</style>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
-                + "<p><a href=\"/search\">BuscarInmueble</a></p>\n"
-                + "<p><a href=\"/saveCity\">InsertarCiudad</a></p>\n"
-                //                + "<p><a href=\"/search\">InsertarDueño</a></p>\n"
-                + "<p><a href=\"/cityList\">VerCiudades</a></p>\n"
+                + "<h1 align=\"center\"><strong><span class=\"Estilo1\"><a href=\"/search\">BuscarInmueble</a></span></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveCity\">InsertarCiudad</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveOwner\">InsertarDueño</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveBuilding\">InsertarInmueble</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/cityList\">VerCiudades</a></strong></h1>\n"
                 + "</body>\n"
                 + "</html>";
     }
 
+    /**
+     *
+     * @param l
+     * @return
+     */
     public static String show(List l) {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -50,6 +83,13 @@ public class HTML {
 
     }
 
+    /**
+     *
+     * @param l
+     * @param id
+     * @param value
+     * @return
+     */
     private static String setFields(List l, String id, String value) {
         String ret = "";
         for (Object c : l) {
@@ -58,6 +98,10 @@ public class HTML {
         return ret;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String saveCity() {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -88,13 +132,17 @@ public class HTML {
         return ret;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String saveOwner() {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Documento sin t&iacute;tulo</title>\n"
+                + "<title>Crear Dueño</title>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
@@ -148,10 +196,14 @@ public class HTML {
         return ret;
     }
 
-    public static String publish() {
-        return "";
-    }
-
+    /**
+     *
+     * @param cities
+     * @param districts
+     * @param owners
+     * @param buildingTypes
+     * @return
+     */
     public static String search(List<City> cities, List<District> districts, List<Owner> owners, List<BuildingType> buildingTypes) {
         String ret;
         ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -168,9 +220,6 @@ public class HTML {
                 + "    <label>city\n"
                 + "    <select name=\"city_id\" id=\"city_id\">\n";
         ret += setFields(cities, "id", "name");
-//        for (City c : cities) {
-//            ret += "<option value=\"" + c.getString("id") + "\">" + c.getString("name") + "</option>";
-//        }
         ret += "    </select>\n"
                 + "    </label>\n"
                 + "</p>\n"
@@ -213,6 +262,84 @@ public class HTML {
                 + "    <label>\n"
                 + "    <input name=\"search\" type=\"submit\" id=\"search\" onclick=\"MM_goToURL('parent','/index');return document.MM_returnValue\"/>\n"
                 + "    </label></p>\n"
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>";
+
+        return ret;
+    }
+
+    public static String saveBulding(List<City> cities, List<District> districts, List<Owner> owners, List<BuildingType> buildingTypes) {
+        String ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+                + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+                + "<head>\n"
+                + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
+                + "<title>Insertar inmueble</title>\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
+                + "  <label>Tipo de Inmueble\n"
+                + "  <select name=\"building_type_id\" id=\"building_type_id\">\n";
+        ret += setFields(buildingTypes, "id", "type");
+        ret += "  </select>\n"
+                + "  </label>\n"
+                + "  <p>\n"
+                + "    <label>Dueño\n"
+                + "    <select name=\"owner_id\" id=\"owner_id\">\n";
+        ret += setFields(owners, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Calle\n"
+                + "    <input name=\"street\" type=\"text\" id=\"street\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Numero\n"
+                + "    <input name=\"number\" type=\"text\" id=\"number\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Barrio\n"
+                + "    <select name=\"district_id\" id=\"district_id\">\n";
+        ret += setFields(districts, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Ciudad\n"
+                + "    <select name=\"city_id\" id=\"city_id\">\n";
+        ret += setFields(cities, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Descripcion\n"
+                + "    <textarea name=\"description\" id=\"description\"></textarea>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Precio\n"
+                + "    <input name=\"price\" type=\"text\" id=\"price\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>\n"
+                + "    <input name=\"rental\" type=\"checkbox\" id=\"rental\" value=\"true\" />\n"
+                + "    Alquiler</label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>\n"
+                + "    <input name=\"sale\" type=\"checkbox\" id=\"sale\" value=\"true\" />\n"
+                + "    Venta</label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>\n"
+                + "    <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
+                + "    </label>\n"
+                + "  </p>"
                 + "</form>\n"
                 + "</body>\n"
                 + "</html>";

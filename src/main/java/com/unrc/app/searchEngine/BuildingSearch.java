@@ -39,7 +39,7 @@ public class BuildingSearch {
             query += (" && building_type_id = " + new Integer(bt_id));
         }
 
-        if (maxPrice != "") {
+        if (maxPrice.compareTo("") != 0) {
             query += (" && price <= " + new Integer(maxPrice));
         }
 
