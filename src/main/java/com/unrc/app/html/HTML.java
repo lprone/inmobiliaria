@@ -40,6 +40,7 @@ public class HTML {
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/cityList\">VerCiudades</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/ownersList\">VerDuenios</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/buildingsList\">VerInmuebles</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/realStateList\">VerInmobiliarias</a></strong></h1>\n"
                 + "</body>\n"
                 + "</html>";
     }

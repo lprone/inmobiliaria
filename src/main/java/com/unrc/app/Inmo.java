@@ -98,6 +98,16 @@ public class Inmo {
                 return ret;
             }// http://localhost:4567/cityList
         });
+        
+        get(new Route("/realStateList") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.show(RealEstateController.list());
+                Base.close();
+                return ret;
+            }// http://localhost:4567/cityList
+        });
 
         /*
          * ---------------------------------------------------------------------
