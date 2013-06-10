@@ -7,4 +7,9 @@ public class District extends Model {
     static {
         validatePresenceOf("name", "city_id");
     }
+    
+    public String toString(){
+    
+        return getString("name");
+    }
 }

@@ -34,10 +34,12 @@ public class HTML {
                 + "<body>\n"
                 + "<h1 align=\"center\"><strong><span class=\"Estilo1\"><a href=\"/search\">BuscarInmueble</a></span></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveCity\">InsertarCiudad</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveDistrict\">InsertarDistrito</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveOwner\">InsertarDuenio</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveBuilding\">InsertarInmueble</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveRealState\">InsertarInmobiliaria</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/cityList\">VerCiudades</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/districtList\">VerDistritos</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/ownersList\">VerDuenios</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/buildingsList\">VerInmuebles</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/realStateList\">VerInmobiliarias</a></strong></h1>\n"
@@ -117,6 +119,48 @@ public class HTML {
                 + "</html>";
         return ret;
     }
+    
+    /**
+     *
+     * @return html code for save a new district
+     */
+    public static String saveDistrict(List<City> cities) {
+        String ret;
+        ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+                + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+                + "<head>\n"
+                + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
+                + "<!-- TemplateBeginEditable name=\"doctitle\" -->\n"
+                + "<title>Guardar Ciudad</title>\n"
+                + "<!-- TemplateEndEditable -->\n"
+                + "<!-- TemplateBeginEditable name=\"head\" -->\n"
+                + "<!-- TemplateEndEditable -->\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
+                + "  <label>\n"
+                + "  <div align=\"center\">\n"
+                + "  Nombre\n"
+                + "  <input name=\"name\" type=\"text\" id=\"name\" />\n"
+                +   "  <p align=\"center\">\n"
+                + "    <label>Ciudad \n"
+                + "    <select name=\"city_id\" id=\"city_id\">\n";
+        ret     += setFields(cities, "id", "name");
+        ret     += "    </select>\n"
+                + "    </label>\n"
+                + "  <br />\n"
+                + "  <br />\n"
+                + "  <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
+                + "  </div>\n"
+                + "  </label>\n"
+                + "  </p>\n"
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>";
+        return ret;
+    }
+
 
     /**
      *

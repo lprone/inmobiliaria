@@ -99,6 +99,10 @@ public class Inmo {
             }// http://localhost:4567/cityList
         });
         
+        /**
+         * list for show all realStates
+         */
+        
         get(new Route("/realStateList") {
             @Override
             public Object handle(Request request, Response response) {
@@ -109,6 +113,21 @@ public class Inmo {
             }// http://localhost:4567/cityList
         });
 
+         /**
+         * list for show all districts
+         */
+        
+        get(new Route("/districtList") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.show(DistrictController.list());
+                Base.close();
+                return ret;
+            }// http://localhost:4567/cityList
+        });
+
+        
         /*
          * ---------------------------------------------------------------------
          */
@@ -212,6 +231,51 @@ public class Inmo {
             }// http://localhost:4567/saveCity
         });
 
+         /**
+         * route for form of new district
+         */
+        get(new Route("/saveDistrict") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.saveDistrict(CityController.list());
+                Base.close();
+                return ret;
+            }// http://localhost:4567/saveCity
+        });
+
+        /**
+         *
+         */
+        post(new Route("/saveDistrict") {
+            @Override
+            public Object handle(Request request, Response response) {
+                String  name    = request.queryParams("name"),
+                        city_id =    request.queryParams("city_id");
+                
+                String [] tags = {
+                                    "name",
+                                    "city_id"
+                                 };
+                
+                String [] values = {
+                                    name,
+                                    city_id    
+                                    };
+                
+                
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                try {
+                    DistrictController.insert(tags,values);
+                } catch (Exception e) {
+                }
+
+                Base.close();
+                return "Distrito agregado correctamente";
+            }// http://localhost:4567/saveCity
+        });
+
+        
         /*
          * -------------------------------
          */
