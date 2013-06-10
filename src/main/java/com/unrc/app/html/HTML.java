@@ -364,7 +364,7 @@ public class HTML {
                 + "  </p>\n"
                 + "  <p>\n"
                 + "    <label>Nro\n"
-                + "    <input name=\"nro\" type=\"text\" id=\"nro\" />\n"
+                + "    <input name=\"number\" type=\"text\" id=\"number\" />\n"
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p>\n"
@@ -398,7 +398,7 @@ public class HTML {
                 + "  </p>\n"
                 + "  <p>\n"
                 + "    <label>Duenios\n"
-                + "    <select name=\"owners\"  id=\"owners\">\n";
+                + "    <select name=\"owners\" size=\"5\" multiple=\"multiple\" id=\"owners\">\n";
         ret += setFields(owners, "id", "name");
         ret += "    </select>\n"
                 + "    </label>\n"
