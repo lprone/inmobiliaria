@@ -267,7 +267,7 @@ public class HTML {
                 + "<title>Insertar inmueble</title>\n"
                 + "</head>\n"
                 + "\n"
-                + "<body>\n"
+                + "<body>\n"    
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>Tipo de Inmueble\n"
                 + "  <select name=\"building_type_id\" id=\"building_type_id\">\n";
@@ -358,7 +358,7 @@ public class HTML {
                 + "  <input name=\"name\" type=\"text\" id=\"name\" />\n"
                 + "  </label>\n"
                 + "  <p>\n"
-                + "    <label>Calle\n"
+                + "    <label>Calle\n"  
                 + "    <input name=\"street\" type=\"text\" id=\"street\" />\n"
                 + "    </label>\n"
                 + "  </p>\n"
@@ -398,7 +398,7 @@ public class HTML {
                 + "  </p>\n"
                 + "  <p>\n"
                 + "    <label>Duenios\n"
-                + "    <select name=\"owners\" size=\"5\" multiple=\"multiple\" id=\"owners\">\n";
+                + "    <select name=\"owners\"  id=\"owners\">\n";
         ret += setFields(owners, "id", "name");
         ret += "    </select>\n"
                 + "    </label>\n"

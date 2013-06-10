@@ -323,6 +323,7 @@ public class Inmo {
         get(new Route("/saveRealState") {
             @Override
             public Object handle(Request request, Response response) {
+                 
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 String ret = HTML.saveRealState(CityController.list(), DistrictController.list(), OwnerController.list());
                 Base.close();
@@ -336,8 +337,48 @@ public class Inmo {
         post(new Route("/saveRealState") {
             @Override
             public Object handle(Request request, Response response) {
+                
+                
+                 String real_estate_id = request.queryParams("real_estate_id"),
+                        name = request.queryParams("name"),
+                        street = request.queryParams("street"),
+                        number = request.queryParams("number"),
+                        district_id = request.queryParams("district_id"),
+                        city_id = request.queryParams("city_id"),
+                        phone = request.queryParams("phone"),
+                        email = request.queryParams("email"),
+                        web = request.queryParams("web");
+                        
+
+                String[] tags = {
+                    "real_estate_id",
+                    "owner_id",
+                    "street",
+                    "number",
+                    "district_id",
+                    "city_id",
+                    "phone",
+                    "email",
+                    "web",
+                    };
+
+                String[] values = {
+                    real_estate_id,
+                    name,
+                    street,
+                    number,
+                    district_id,
+                    city_id,
+                    phone,
+                    email,
+                    web,};
+               
+               
+                
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 try {
+                     RealEstateController.insert(tags, values);
+
                 } catch (Exception e) {
                 }
                 Base.close();
