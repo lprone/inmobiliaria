@@ -4,7 +4,7 @@
  */
 package com.unrc.app.controllers;
 
-import com.mysql.jdbc.EscapeTokenizer;
+//import com.mysql.jdbc.EscapeTokenizer;
 import com.unrc.app.models.Owner;
 import com.unrc.app.models.RealEstate;
 import java.util.List;

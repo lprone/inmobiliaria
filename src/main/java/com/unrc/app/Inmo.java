@@ -339,7 +339,7 @@ public class Inmo {
             public Object handle(Request request, Response response) {
                 
                 
-                 String real_estate_id = request.queryParams("real_estate_id"),
+                 String 
                         name = request.queryParams("name"),
                         street = request.queryParams("street"),
                         number = request.queryParams("number"),
@@ -351,8 +351,7 @@ public class Inmo {
                         
 
                 String[] tags = {
-                    "real_estate_id",
-                    "owner_id",
+                    "name",
                     "street",
                     "number",
                     "district_id",
@@ -363,7 +362,7 @@ public class Inmo {
                     };
 
                 String[] values = {
-                    real_estate_id,
+                    
                     name,
                     street,
                     number,
@@ -377,7 +376,7 @@ public class Inmo {
                 
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 try {
-                     RealEstateController.insert(tags, values);
+                       RealEstateController.insert(tags, values);
 
                 } catch (Exception e) {
                 }

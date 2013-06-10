@@ -388,7 +388,7 @@ public class HTML {
                 + "  </p>\n"
                 + "  <p>\n"
                 + "    <label>Email\n"
-                + "    <input name=\"mail\" type=\"text\" id=\"mail\" />\n"
+                + "    <input name=\"email\" type=\"text\" id=\"email\" />\n"
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p>\n"
