@@ -9,6 +9,7 @@ import org.javalite.activejdbc.Base;
 
 import com.unrc.app.html.HTML;
 import java.util.LinkedList;
+import javax.crypto.Cipher;
 
 import static spark.Spark.*;
 import spark.*;
@@ -300,6 +301,38 @@ public class Inmo {
                 Base.close();
                 return "Inmueble agregado correctamente";
             }// http://localhost:4567/saveBuilding
+        });
+
+        /*
+         * -------------------------------
+         */
+
+        /**
+         * route for form of new realState
+         */
+        get(new Route("/saveRealState") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                String ret = HTML.saveRealState(CityController.list(), DistrictController.list(), OwnerController.list());
+                Base.close();
+                return ret;
+            }// http://localhost:4567/saveRealState
+        });
+
+        /**
+         * IMPLEMENTAR
+         */
+        post(new Route("/saveRealState") {
+            @Override
+            public Object handle(Request request, Response response) {
+                Base.open(DB.driver, DB.url, DB.user, DB.password);
+                try {
+                } catch (Exception e) {
+                }
+                Base.close();
+                return "Inmobiliaria agregada correctamente";
+            }// http://localhost:4567/saveRealState
         });
     }
 }

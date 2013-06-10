@@ -36,6 +36,7 @@ public class HTML {
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveCity\">InsertarCiudad</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveOwner\">InsertarDuenio</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveBuilding\">InsertarInmueble</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveRealState\">InsertarInmobiliaria</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/cityList\">VerCiudades</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/ownersList\">VerDuenios</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/buildingsList\">VerInmuebles</a></strong></h1>\n"
@@ -253,7 +254,7 @@ public class HTML {
      *
      * @param cities cities list
      * @param districts districts list
-     * @param ownersowners list
+     * @param owners owners list
      * @param buildingTypes building type list
      * @return html code for new building form
      */
@@ -332,6 +333,83 @@ public class HTML {
                 + "</body>\n"
                 + "</html>";
 
+        return ret;
+    }
+
+    /**
+     *
+     * @param cities cities list
+     * @param districts districts list
+     * @param owners owners list
+     * @return
+     */
+    public static String saveRealState(List<City> cities, List<District> districts, List<Owner> owners) {
+        String ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+                + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
+                + "<head>\n"
+                + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
+                + "<title>Nueva inmobiliaria</title>\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
+                + "  <label>Nombre\n"
+                + "  <input name=\"name\" type=\"text\" id=\"name\" />\n"
+                + "  </label>\n"
+                + "  <p>\n"
+                + "    <label>Calle\n"
+                + "    <input name=\"street\" type=\"text\" id=\"street\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Nro\n"
+                + "    <input name=\"nro\" type=\"text\" id=\"nro\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Barrio\n"
+                + "    <select name=\"district_id\" id=\"district_id\">\n";
+        ret += setFields(districts, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Ciudad\n"
+                + "    <select name=\"city_id\" id=\"city_id\">\n";
+        ret += setFields(cities, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Telefono\n"
+                + "    <input name=\"phone\" type=\"text\" id=\"phone\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Email\n"
+                + "    <input name=\"mail\" type=\"text\" id=\"mail\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Web\n"
+                + "    <input name=\"web\" type=\"text\" id=\"web\" />\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>Duenios\n"
+                + "    <select name=\"owners\" size=\"5\" multiple=\"multiple\" id=\"owners\">\n";
+        ret += setFields(owners, "id", "name");
+        ret += "    </select>\n"
+                + "    </label>\n"
+                + "  </p>\n"
+                + "  <p>\n"
+                + "    <label>\n"
+                + "    <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
+                + "    </label>\n"
+                + "  </p>"
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>";
         return ret;
     }
 }
