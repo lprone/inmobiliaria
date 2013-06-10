@@ -16,7 +16,7 @@ public class HTML {
 
     /**
      *
-     * @return
+     * @return html code of index page
      */
     public static String index() {
         return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -34,10 +34,10 @@ public class HTML {
                 + "<body>\n"
                 + "<h1 align=\"center\"><strong><span class=\"Estilo1\"><a href=\"/search\">BuscarInmueble</a></span></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveCity\">InsertarCiudad</a></strong></h1>\n"
-                + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveOwner\">InsertarDueño</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong><a href=\"/saveOwner\">InsertarDuenio</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/saveBuilding\">InsertarInmueble</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/cityList\">VerCiudades</a></strong></h1>\n"
-                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/ownersList\">VerDueños</a></strong></h1>\n"
+                + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/ownersList\">VerDuenios</a></strong></h1>\n"
                 + "<h1 align=\"center\" class=\"Estilo1\"><strong> <a href=\"/buildingsList\">VerInmuebles</a></strong></h1>\n"
                 + "</body>\n"
                 + "</html>";
@@ -45,8 +45,8 @@ public class HTML {
 
     /**
      *
-     * @param l
-     * @return
+     * @param l list with elements to show
+     * @return html code for show elements in list
      */
     public static String show(List l) {
         String ret;
@@ -69,10 +69,10 @@ public class HTML {
 
     /**
      *
-     * @param l
-     * @param id
-     * @param value
-     * @return
+     * @param l list with values to set in combo row
+     * @param id name of id column
+     * @param value name of value column
+     * @return html code for set values in fields of comboLists
      */
     private static String setFields(List l, String id, String value) {
         String ret = "";
@@ -84,7 +84,7 @@ public class HTML {
 
     /**
      *
-     * @return
+     * @return html code for save a new city
      */
     public static String saveCity() {
         String ret;
@@ -118,7 +118,7 @@ public class HTML {
 
     /**
      *
-     * @return
+     * @return html code for save a new owner
      */
     public static String saveOwner(List<City> cities, List<District> districts) {
         String ret;
@@ -126,7 +126,7 @@ public class HTML {
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
                 + "<head>\n"
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
-                + "<title>Cargar Dueño</title>\n"
+                + "<title>Cargar Duenio</title>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
@@ -178,11 +178,11 @@ public class HTML {
 
     /**
      *
-     * @param cities
-     * @param districts
-     * @param owners
-     * @param buildingTypes
-     * @return
+     * @param cities cities list
+     * @param districts districts list
+     * @param ownersowners list
+     * @param buildingTypes building type list
+     * @return html code for search form
      */
     public static String search(List<City> cities, List<District> districts, List<Owner> owners, List<BuildingType> buildingTypes) {
         String ret;
@@ -249,6 +249,14 @@ public class HTML {
         return ret;
     }
 
+    /**
+     *
+     * @param cities cities list
+     * @param districts districts list
+     * @param ownersowners list
+     * @param buildingTypes building type list
+     * @return html code for new building form
+     */
     public static String saveBulding(List<City> cities, List<District> districts, List<Owner> owners, List<BuildingType> buildingTypes) {
         String ret = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
@@ -265,7 +273,7 @@ public class HTML {
         ret += "  </select>\n"
                 + "  </label>\n"
                 + "  <p>\n"
-                + "    <label>Dueño\n"
+                + "    <label>Duenio\n"
                 + "    <select name=\"owner_id\" id=\"owner_id\">\n";
         ret += setFields(owners, "id", "name");
         ret += "    </select>\n"

@@ -16,17 +16,26 @@ import spark.*;
 public class Inmo {
 
     public static void main(String[] args) {
+        /**
+         * open browser in windows
+         */
         try {
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "http://localhost:4567/index");
         } catch (Exception e) {
         }
-
+        /**
+         * open broser in ubuntu
+         */
+        try {
+            Runtime.getRuntime().exec("firefox http://localhost:4567/index");
+        } catch (Exception e) {
+        }
 
 //        Base.open(DB.driver, DB.url, DB.user, DB.password);
 //        System.out.println(BuildingSearch.searchAll(null, null, null, 250000, "Lucas", -1, -1));
 
         /**
-         *
+         * test route
          */
         get(new Route("/hello") {
             @Override
@@ -36,7 +45,7 @@ public class Inmo {
         });
 
         /**
-         *
+         * route for list information of a owner identified by id number
          */
         get(new Route("/owners/:id") {
             @Override
@@ -49,20 +58,20 @@ public class Inmo {
         });
 
         /**
-         *
+         * route for show all owners
          */
         get(new Route("/ownersList") {
             @Override
             public Object handle(Request request, Response response) {
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
-                String ret = HTML.show(OwnerController.list());                
+                String ret = HTML.show(OwnerController.list());
                 Base.close();
                 return ret;
             }// http://localhost:4567/ownersList
         });
-        
-         /**
-         *
+
+        /**
+         * route for show all buildings
          */
         get(new Route("/buildingsList") {
             @Override
@@ -77,7 +86,7 @@ public class Inmo {
 
 
         /**
-         *
+         * list for show all cities
          */
         get(new Route("/cityList") {
             @Override
@@ -94,7 +103,7 @@ public class Inmo {
          */
 
         /**
-         *
+         * route for index page
          */
         get(new Route("/index") {
             @Override
@@ -108,7 +117,7 @@ public class Inmo {
          */
 
         /**
-         *
+         * route for form of new owner
          */
         get(new Route("/saveOwner") {
             @Override
@@ -162,7 +171,7 @@ public class Inmo {
          */
 
         /**
-         *
+         * route for form of new city
          */
         get(new Route("/saveCity") {
             @Override
@@ -197,7 +206,7 @@ public class Inmo {
          */
 
         /**
-         *
+         * search form
          */
         get(new Route("/search") {
             @Override
@@ -231,7 +240,7 @@ public class Inmo {
          */
 
         /**
-         *
+         * route for form of new building
          */
         get(new Route("/saveBuilding") {
             @Override
