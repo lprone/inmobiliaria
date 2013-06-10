@@ -162,7 +162,7 @@ public class Inmo {
                 } catch (Exception e) {
                 }
                 Base.close();
-                return "Dueño agregado correctamente";
+                return "Duenio agregado correctamente";
             }// http://localhost:4567/saveOwner
         });
 
