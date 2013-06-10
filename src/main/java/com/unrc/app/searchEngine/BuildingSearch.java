@@ -16,13 +16,13 @@ public class BuildingSearch {
 
     /**
      *
-     * @param city_id
-     * @param dst_id
-     * @param bt_id
-     * @param maxPrice
-     * @param owr_id
-     * @param sale
-     * @param rental
+     * @param city_id value of city id
+     * @param dst_id value of district id
+     * @param bt_id value of building type id
+     * @param maxPrice max prace value
+     * @param owr_id value of owner id
+     * @param sale true if a building is for sale
+     * @param rental true if buildin is for rental
      * @return
      */
     public static List<Building> searchAll(String city_id, String dst_id, String bt_id, String maxPrice, String owr_id, String sale, String rental) {
@@ -64,8 +64,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param city
-     * @return
+     * @param city name of city
+     * @return list of buildings in a city
      */
     public static List<Building> searchForCity(String city) {
         return BuildingController.listSelect("city_id = ?", CityController.getId(city));
@@ -73,8 +73,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param d
-     * @return
+     * @param d name of district
+     * @return list of buildings in a district
      */
     public static List<Building> searchForDistrict(String d) {
         return BuildingController.listSelect("district_id = ?", DistrictController.getId(d));
@@ -82,8 +82,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param bt
-     * @return
+     * @param bt type of building
+     * @return list of buildings of the same type
      */
     public static List<Building> searchForBuildingType(String bt) {
         return BuildingController.listSelect("building_type_id = ?", BuildingTypeController.getId(bt));
@@ -91,8 +91,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param maxPrice
-     * @return
+     * @param maxPrice max price value
+     * @return list of buildings with lower price of maxPrice value
      */
     public static List<Building> searchForMaxPrice(int maxPrice) {
         return BuildingController.listSelect("price <= ?", maxPrice);
@@ -100,8 +100,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param name
-     * @return
+     * @param name owner's name
+     * @return list of buildings of the same owner
      */
     public static List<Building> searchForOwner(String name) {
         return BuildingController.listSelect("owner_id = ?", OwnerController.getId(name));
@@ -109,8 +109,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param value
-     * @return
+     * @param value 1 if building is for sale
+     * @return list of buildings for sale
      */
     public static List<Building> searchToSale(int value) {
         return BuildingController.listSelect("sale = ?", value);
@@ -118,8 +118,8 @@ public class BuildingSearch {
 
     /**
      *
-     * @param value
-     * @return
+     * @param value 1 if building is for rental
+     * @return list of buildings for rental
      */
     public static List<Building> searchToRental(int value) {
         return BuildingController.listSelect("rental = ?", value);
