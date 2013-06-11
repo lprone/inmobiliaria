@@ -98,11 +98,10 @@ public class Inmo {
                 return ret;
             }// http://localhost:4567/cityList
         });
-        
+
         /**
          * list for show all realStates
          */
-        
         get(new Route("/realStateList") {
             @Override
             public Object handle(Request request, Response response) {
@@ -113,10 +112,9 @@ public class Inmo {
             }// http://localhost:4567/cityList
         });
 
-         /**
+        /**
          * list for show all districts
          */
-        
         get(new Route("/districtList") {
             @Override
             public Object handle(Request request, Response response) {
@@ -127,7 +125,7 @@ public class Inmo {
             }// http://localhost:4567/cityList
         });
 
-        
+
         /*
          * ---------------------------------------------------------------------
          */
@@ -231,7 +229,7 @@ public class Inmo {
             }// http://localhost:4567/saveCity
         });
 
-         /**
+        /**
          * route for form of new district
          */
         get(new Route("/saveDistrict") {
@@ -250,23 +248,23 @@ public class Inmo {
         post(new Route("/saveDistrict") {
             @Override
             public Object handle(Request request, Response response) {
-                String  name    = request.queryParams("name"),
-                        city_id =    request.queryParams("city_id");
-                
-                String [] tags = {
-                                    "name",
-                                    "city_id"
-                                 };
-                
-                String [] values = {
-                                    name,
-                                    city_id    
-                                    };
-                
-                
+                String name = request.queryParams("name"),
+                        city_id = request.queryParams("city_id");
+
+                String[] tags = {
+                    "name",
+                    "city_id"
+                };
+
+                String[] values = {
+                    name,
+                    city_id
+                };
+
+
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 try {
-                    DistrictController.insert(tags,values);
+                    DistrictController.insert(tags, values);
                 } catch (Exception e) {
                 }
 
@@ -275,7 +273,7 @@ public class Inmo {
             }// http://localhost:4567/saveCity
         });
 
-        
+
         /*
          * -------------------------------
          */
@@ -387,7 +385,7 @@ public class Inmo {
         get(new Route("/saveRealState") {
             @Override
             public Object handle(Request request, Response response) {
-                 
+
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 String ret = HTML.saveRealState(CityController.list(), DistrictController.list(), OwnerController.list());
                 Base.close();
@@ -401,18 +399,17 @@ public class Inmo {
         post(new Route("/saveRealState") {
             @Override
             public Object handle(Request request, Response response) {
-                
-                
-                 String 
-                        name = request.queryParams("name"),
+
+                String name = request.queryParams("name"),
                         street = request.queryParams("street"),
                         number = request.queryParams("number"),
                         district_id = request.queryParams("district_id"),
                         city_id = request.queryParams("city_id"),
                         phone = request.queryParams("phone"),
                         email = request.queryParams("email"),
-                        web = request.queryParams("web");
-                        
+                        web = request.queryParams("web"),
+                        owner = request.queryParams("owners");
+                
 
                 String[] tags = {
                     "name",
@@ -422,26 +419,22 @@ public class Inmo {
                     "city_id",
                     "phone",
                     "email",
-                    "web",
-                    };
+                    "web"};
 
                 String[] values = {
-                    
                     name,
-                    street,
-                    number,
-                    district_id,
-                    city_id,
-                    phone,
-                    email,
-                    web,};
-               
-               
-                
+                    (street.compareTo("") != 0) ? street : null,
+                    (number.compareTo("") != 0) ? number : null,
+                    (district_id.compareTo("") != 0) ? district_id : null,
+                    (city_id.compareTo("") != 0) ? city_id : null,
+                    (phone.compareTo("") != 0) ? phone : null,
+                    (email.compareTo("") != 0) ? email : null,
+                    (web.compareTo("") != 0) ? web : null,};
+
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 try {
-                       RealEstateController.insert(tags, values);
-
+                    RealEstateController.insert(tags, values);
+                    RealEstateController.assignOwner(RealEstateController.get(name), OwnerController.get(new Integer(owner)));
                 } catch (Exception e) {
                 }
                 Base.close();
