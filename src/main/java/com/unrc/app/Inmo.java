@@ -35,15 +35,7 @@ public class Inmo {
 //        Base.open(DB.driver, DB.url, DB.user, DB.password);
 //        System.out.println(BuildingSearch.searchAll(null, null, null, 250000, "Lucas", -1, -1));
 
-        /**
-         * test route
-         */
-        get(new Route("/hello") {
-            @Override
-            public Object handle(Request request, Response response) {
-                return "Hello World!";
-            }//para ver el hello world en el buscador pongan http://localhost:4567/hello
-        });
+        
 
         /**
          * route for list information of a owner identified by id number
