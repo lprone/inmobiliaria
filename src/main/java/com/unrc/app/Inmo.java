@@ -35,7 +35,7 @@ public class Inmo {
 //        Base.open(DB.driver, DB.url, DB.user, DB.password);
 //        System.out.println(BuildingSearch.searchAll(null, null, null, 250000, "Lucas", -1, -1));
 
-        
+
 
         /**
          * route for list information of a owner identified by id number
@@ -401,7 +401,7 @@ public class Inmo {
                         email = request.queryParams("email"),
                         web = request.queryParams("web"),
                         owner = request.queryParams("owners");
-                
+
 
                 String[] tags = {
                     "name",

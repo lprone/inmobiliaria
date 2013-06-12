@@ -14,7 +14,6 @@ import org.javalite.activejdbc.Model;
  */
 public class HTML {
 
-    
     /**
      *
      * @return html code of index page
@@ -26,14 +25,19 @@ public class HTML {
                 + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n"
                 + "<title>Revista Inmobiliaria</title>\n"
                 + "<style type=\"text/css\">\n"
+                + "<!--\n"
+                + "body {\n"
+                + "	background-image: url(http://www.gtr3s.com/sites/default/files/styles/medium/public/inmobiliaria_0.jpg);\n"
+                + "}\n"
+                + "-->"
                 + ".Estilo1 {font-family: \"comic Sans MS\"}\n"
                 + "</style>\n"
                 + "</head>\n"
                 + "\n"
                 + "<body style=\"background-color:#eeeeee;\">\n"
-                +"<h1 align=\"center\"><font  face=\"comic Sans MS\"><strong><font  size=\"12\" face=\"comic Sans MS\" color=\"red\">E</font>l <font size=\"12\" face=\"comic Sans MS\" color=\"red\">I</font>nmobiliario</span></strong></font></h1>\n"
-                +"</br>\n"
-                +"</br>\n"
+                + "<h1 align=\"center\"><font  face=\"comic Sans MS\"><strong><font  size=\"12\" face=\"comic Sans MS\" color=\"red\">E</font>l <font size=\"12\" face=\"comic Sans MS\" color=\"red\">I</font>nmobiliario</span></strong></font></h1>\n"
+                + "</br>\n"
+                + "</br>\n"
                 + "<h1 align=\"center\"><strong><a href=\"/search\" style=\"text-decoration:none\" ><font color=\"red\">Buscar Inmueble</font></a></span></strong></h1>\n"
                 + "<h2 align=\"left\"><strong><a href=\"/saveCity\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">&nbsp&nbspInsertar Ciudad</font></a></strong></h1>\n"
                 + "<h2 align=\"left\"><strong><a href=\"/saveDistrict\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">&nbsp&nbspInsertar Distrito</font></a></strong></h1>\n"
@@ -106,7 +110,7 @@ public class HTML {
                 + "</head>\n"
                 + "\n"
                 + "<body style=\"background-color:#eeeeee;\">\n"
-                +"</br></br></br></br>\n"
+                + "</br></br></br></br>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>\n"
                 + "  <div align=\"center\">\n"
@@ -123,7 +127,7 @@ public class HTML {
                 + "</html>";
         return ret;
     }
-    
+
     /**
      *
      * @return html code for save a new district
@@ -139,18 +143,18 @@ public class HTML {
                 + "</head>\n"
                 + "\n"
                 + "<body style=\"background-color:#eeeeee;\">\n"
-                +"</br></br>\n"
+                + "</br></br>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>\n"
                 + "     <div align=\"left\">&nbsp Nombre\n"
                 + "     <input name=\"name\" type=\"text\" id=\"name\" />\n"
                 + "     </div>\n"
-                +"   </label>\n"
+                + "   </label>\n"
                 + "  <p align=\"left\">\n"
                 + "    <label>&nbsp Ciudad &nbsp \n"
                 + "    <select name=\"city_id\" id=\"city_id\">\n";
-        ret     += setFields(cities, "id", "name");
-        ret     += "    </select>\n"
+        ret += setFields(cities, "id", "name");
+        ret += "    </select>\n"
                 + "    </label>&nbsp\n"
                 + "  <br />\n"
                 + "  <br />\n"
@@ -164,7 +168,6 @@ public class HTML {
                 + "</html>";
         return ret;
     }
-
 
     /**
      *
@@ -180,7 +183,7 @@ public class HTML {
                 + "</head>\n"
                 + "\n"
                 + "<body style=\"background-color:#eeeeee;\">\n"
-                +"</br></br>\n"
+                + "</br></br>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>\n"
                 + "  <div align=\"left\">&nbsp Nombre\n"
@@ -290,7 +293,7 @@ public class HTML {
                 + "    Alquiler</label>\n"
                 + "  </p>\n"
                 + "  <p align=\"left\">\n"
-                      + "    <label>\n"
+                + "    <label>\n"
                 + " &nbsp <input name=\"search\" type=\"submit\" id=\"search\" onclick=\"MM_goToURL('parent','/index');return document.MM_returnValue\"/>\n"
                 + "    </label></p>\n"
                 + "</form   >\n"
@@ -316,14 +319,14 @@ public class HTML {
                 + "<title>Insertar inmueble</title>\n"
                 + "</head>\n"
                 + "\n"
-                + "<body style=\"background-color:#eeeeee;\">\n"    
-                +"</br></br>\n"
+                + "<body style=\"background-color:#eeeeee;\">\n"
+                + "</br></br>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>&nbsp Tipo  &nbsp &nbsp\n"
                 + "  <select name=\"building_type_id\" id=\"building_type_id\">\n";
         ret += setFields(buildingTypes, "id", "type");
         ret += "  </select>\n"
-                + "  </label>\n"    
+                + "  </label>\n"
                 + "  <p>\n"
                 + "    <label>&nbsp Duenio\n"
                 + "    <select name=\"owner_id\" id=\"owner_id\">\n";
@@ -377,7 +380,7 @@ public class HTML {
                 + "  </p>\n"
                 + "  <p>\n"
                 + "    <label>&nbsp&nbsp\n"
-                +"</br>\n"
+                + "</br>\n"
                 + " &nbsp   <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
                 + "    </label>\n"
                 + "  </p>"
@@ -404,13 +407,13 @@ public class HTML {
                 + "</head>\n"
                 + "\n"
                 + "<body style=\"background-color:#eeeeee;\">\n"
-                +"</br></br>\n"
+                + "</br></br>\n"
                 + "<form id=\"form1\" name=\"form1\" method=\"post\" action=\"\">\n"
                 + "  <label>&nbsp Nombre\n"
                 + "  <input name=\"name\" type=\"text\" id=\"name\" />\n"
                 + "  </label>\n"
                 + "  <p>\n"
-                + "    <label>&nbsp Calle &nbsp&nbsp&nbsp\n"  
+                + "    <label>&nbsp Calle &nbsp&nbsp&nbsp\n"
                 + "    <input name=\"street\" type=\"text\" id=\"street\" />\n"
                 + "    </label>\n"
                 + "  </p>\n"
@@ -456,7 +459,7 @@ public class HTML {
                 + "    </label>\n"
                 + "  </p>\n"
                 + "  <p>\n"
-                +"</br>\n"
+                + "</br>\n"
                 + "    <label>&nbsp\n"
                 + "    <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
                 + "    </label>\n"
