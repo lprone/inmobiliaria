@@ -37,7 +37,6 @@ public class HTML {
                 + "<body style=\"background-color:#eeeeee;\">\n"
                 + "<h1 align=\"center\"><font  face=\"comic Sans MS\"><strong><font  size=\"12\" face=\"comic Sans MS\" color=\"red\">E</font>l <font size=\"12\" face=\"comic Sans MS\" color=\"red\">I</font>nmobiliario</span></strong></font></h1>\n"
                 + "</br>\n"
-                + "</br>\n"
                 + "<h1 align=\"center\"><strong><a href=\"/search\" style=\"text-decoration:none\" ><font color=\"red\">Buscar Inmueble</font></a></span></strong></h1>\n"
                 + "<h2 align=\"left\"><strong><a href=\"/saveCity\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">&nbsp&nbspInsertar Ciudad</font></a></strong></h1>\n"
                 + "<h2 align=\"left\"><strong><a href=\"/saveDistrict\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">&nbsp&nbspInsertar Distrito</font></a></strong></h1>\n"
@@ -70,7 +69,7 @@ public class HTML {
         for (Object o : l) {
             ret += "<p>" + o.toString() + "</p>\n";
         }
-
+        ret  += "<h3  align=\"rigth\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
         ret += "</body>\n"
                 + "</html>";
         return ret;
@@ -122,9 +121,10 @@ public class HTML {
                 + "  <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
                 + "  </div>\n"
                 + "  </label>\n"
-                + "</form>\n"
-                + "</body>\n"
-                + "</html>";
+                + "</form>\n";
+               ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+               ret+=  "</body>\n"
+                + "</html>";    
         return ret;
     }
 
@@ -163,8 +163,9 @@ public class HTML {
                 + "  </div>\n"
                 + "  </label>\n"
                 + "  </p>\n"
-                + "</form>\n"
-                + "</body>\n"
+                + "</form>\n";
+             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+             ret+=  "</body>\n"
                 + "</html>";
         return ret;
     }
@@ -223,8 +224,9 @@ public class HTML {
                 + "    <input name=\"save\" type=\"submit\" id=\"save\" value=\"Enviar\" />\n"
                 + "    </label>\n"
                 + "  </p>\n"
-                + "</form>\n"
-                + "</body>\n"
+                + "</form>\n";
+             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+             ret+=  "</body>\n"
                 + "</html>";
 
         return ret;
@@ -296,8 +298,9 @@ public class HTML {
                 + "    <label>\n"
                 + " &nbsp <input name=\"search\" type=\"submit\" id=\"search\" onclick=\"MM_goToURL('parent','/index');return document.MM_returnValue\"/>\n"
                 + "    </label></p>\n"
-                + "</form   >\n"
-                + "</body>\n"
+                + "</form   >\n";
+             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+             ret+=  "</body>\n"
                 + "</html>";
 
         return ret;
@@ -384,8 +387,9 @@ public class HTML {
                 + " &nbsp   <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
                 + "    </label>\n"
                 + "  </p>"
-                + "</form>\n"
-                + "</body>\n"
+                + "</form>\n";
+             ret+= "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+             ret+=  "</body>\n"
                 + "</html>";
 
         return ret;
@@ -464,8 +468,9 @@ public class HTML {
                 + "    <input type=\"submit\" name=\"Submit\" value=\"Enviar\" />\n"
                 + "    </label>\n"
                 + "  </p>"
-                + "</form>\n"
-                + "</body>\n"
+                + "</form>\n";
+             ret+= "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
+             ret+=  "</body>\n"
                 + "</html>";
         return ret;
     }
