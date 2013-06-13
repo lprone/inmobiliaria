@@ -15,7 +15,7 @@ public class OwnerController {
 
     /**
      *
-     * @param name
+     * @param id
      * @return
      */
     public static Owner get(int id) {

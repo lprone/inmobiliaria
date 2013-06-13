@@ -18,6 +18,15 @@ public class BuildingTypeController {
     public static BuildingType get(String type) {
         return BuildingType.findById(getId(type));
     }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public static BuildingType get (int id){
+        return BuildingType.findById(id);
+    }
 
     /**
      *

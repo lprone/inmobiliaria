@@ -11,16 +11,16 @@ public class Building extends Model {
 
     @Override
     public String toString() {
-        return    "Tipo: "+getString("building_type_id") + " - "
-                +"Duenio: "+ getString("owner_id") + " - "
-                +"Calle: " + getString("street") + " - "
-                +"Numero: "+ getString("number") + " - "
-                +"Ciudad: "+ getString("city_id") + " - "
-                +"Barrio: "+ getString("district_id") + " - "
-                +"Descripcion: "+ getString("description") + " - "
-                +"Precio: "+ getString("price") + " - "
-                +"En venta: "+ getString("sale") + " - "
-                +"Se alquila: "+ getString("rental");
+        return "Tipo: " + BuildingTypeController.get(new Integer(getString("building_type_id"))).getString("type") + " - "
+                + "Duenio: " + OwnerController.get(new Integer(getString("owner_id"))).getString("name") + " - "
+                + "Calle: " + getString("street") + " - "
+                + "Numero: " + getString("number") + " - "
+                + "Ciudad: " + CityController.get(new Integer(getString("city_id"))).getString("name") + " - "
+                + "Barrio: " + DistrictController.get(new Integer(getString("district_id"))).getString("name") + " - "
+                + "Descripcion: " + getString("description") + " - "
+                + "Precio: " + getString("price") + " - "
+                + "En venta: " + getString("sale") + " - "
+                + "Se alquila: " + getString("rental");
 
 
     }

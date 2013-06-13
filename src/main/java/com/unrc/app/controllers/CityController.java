@@ -14,6 +14,15 @@ import java.util.List;
 public class CityController {
 
     /**
+     * 
+     * @param id
+     * @return 
+     */
+    public static City get(int id){
+        return City.findById(id);
+    }
+    
+    /**
      *
      * @param name
      * @return

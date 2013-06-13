@@ -14,6 +14,15 @@ import java.util.List;
 public class DistrictController {
 
     /**
+     * 
+     * @param id
+     * @return 
+     */
+    public static District get(int id) {
+        return District.findById(id);
+    }
+
+    /**
      *
      * @param tags
      * @param values
