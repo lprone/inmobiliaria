@@ -288,7 +288,7 @@ public class Inmo {
                             maxPrice = request.queryParams("maxPrice"),
                             sale = request.queryParams("sale"),
                             rental = request.queryParams("rental");
-                    System.out.println(city_id + " " + district_id + " " + building_type_id + " " + owner_id + " " + maxPrice + " " + sale + " " + rental);
+//                    System.out.println(city_id + " " + district_id + " " + building_type_id + " " + owner_id + " " + maxPrice + " " + sale + " " + rental);
                     try {
                         ret = HTML.show(BuildingSearch.searchAll(city_id, district_id, building_type_id, maxPrice, owner_id, sale, rental));
                     } catch (Exception e) {
@@ -386,7 +386,7 @@ public class Inmo {
         });
 
         /**
-         * IMPLEMENTAR
+         * 
          */
         post(new Route("/saveRealState") {
             @Override

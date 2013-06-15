@@ -69,7 +69,7 @@ public class HTML {
         for (Object o : l) {
             ret += "<p>" + o.toString() + "</p>\n";
         }
-        ret  += "<h3  align=\"rigth\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "<h3  align=\"rigth\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
         ret += "</body>\n"
                 + "</html>";
         return ret;
@@ -84,7 +84,7 @@ public class HTML {
      * @return html code for set values in fields of comboLists
      */
     private static String setFields(List l, String id, String value) {
-        String ret = "";
+        String ret = "<option value=\"" + -1 + "\">" + "" + "</option>";
         for (Object c : l) {
             ret += "<option value=\"" + ((Model) c).getString(id) + "\">" + ((Model) c).getString(value) + "</option>";
         }
@@ -122,9 +122,9 @@ public class HTML {
                 + "  </div>\n"
                 + "  </label>\n"
                 + "</form>\n";
-               ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-               ret+=  "</body>\n"
-                + "</html>";    
+        ret += "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
+                + "</html>";
         return ret;
     }
 
@@ -164,8 +164,8 @@ public class HTML {
                 + "  </label>\n"
                 + "  </p>\n"
                 + "</form>\n";
-             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-             ret+=  "</body>\n"
+        ret += "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
                 + "</html>";
         return ret;
     }
@@ -225,8 +225,8 @@ public class HTML {
                 + "    </label>\n"
                 + "  </p>\n"
                 + "</form>\n";
-             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-             ret+=  "</body>\n"
+        ret += "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
                 + "</html>";
 
         return ret;
@@ -299,8 +299,8 @@ public class HTML {
                 + " &nbsp <input name=\"search\" type=\"submit\" id=\"search\" onclick=\"MM_goToURL('parent','/index');return document.MM_returnValue\"/>\n"
                 + "    </label></p>\n"
                 + "</form   >\n";
-             ret+= "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-             ret+=  "</body>\n"
+        ret += "</br></br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
                 + "</html>";
 
         return ret;
@@ -388,8 +388,8 @@ public class HTML {
                 + "    </label>\n"
                 + "  </p>"
                 + "</form>\n";
-             ret+= "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-             ret+=  "</body>\n"
+        ret += "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
                 + "</html>";
 
         return ret;
@@ -469,8 +469,8 @@ public class HTML {
                 + "    </label>\n"
                 + "  </p>"
                 + "</form>\n";
-             ret+= "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n"; 
-             ret+=  "</body>\n"
+        ret += "</br><h3  align=\"center\"> <a href=\"/index\" style=\"text-decoration:none\" ><font color=\"black\" face=\"comic Sans MS\">Volver</font></a></h3>\n";
+        ret += "</body>\n"
                 + "</html>";
         return ret;
     }

@@ -28,14 +28,14 @@ public class BuildingSearch {
     public static List<Building> searchAll(String city_id, String dst_id, String bt_id, String maxPrice, String owr_id, String sale, String rental) {
         String query = "";
 
-        if (city_id != null) {
+        if (new Integer(city_id) != -1) {
             query += ("city_id = " + new Integer(city_id));
         }
-        if (dst_id != null) {
+        if (new Integer(dst_id) != -1) {
             query += (" && district_id = " + new Integer(dst_id));
         }
 
-        if (bt_id != null) {
+        if (new Integer(bt_id) != -1) {
             query += (" && building_type_id = " + new Integer(bt_id));
         }
 
@@ -43,7 +43,7 @@ public class BuildingSearch {
             query += (" && price <= " + new Integer(maxPrice));
         }
 
-        if (owr_id != null) {
+        if (new Integer(owr_id) != -1) {
             query += (" && owner_id = " + new Integer(owr_id));
         }
 
