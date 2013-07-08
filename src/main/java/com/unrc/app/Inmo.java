@@ -355,8 +355,8 @@ public class Inmo {
                     city_id,
                     description,
                     price,
-                    (sale.compareTo("1") == 0) ? "1" : "0",
-                    (rental.compareTo("1") == 0) ? "1" : "0",};
+                    (sale.compareTo("true") == 0) ? "1" : "0",
+                    (rental.compareTo("true") == 0) ? "1" : "0",};
                 Base.open(DB.driver, DB.url, DB.user, DB.password);
                 try {
                     BuildingController.insert(tags, values);
